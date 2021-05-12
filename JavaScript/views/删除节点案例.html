@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="button" value="删除">
+  <ul>
+    <li>吴彦祖</li>
+    <li>梁朝伟</li>
+    <li>彭于晏</li>
+    <li>吴亦凡</li>
+    <li>陈冠希</li>
+  </ul>
+  <script>
+    var btn = document.querySelector('input');
+    var ul = document.querySelector('ul');
+
+    btn.onclick = function () {
+      ul.removeChild(ul.children[0]);
+      if (ul.children.length == 0) {
+        btn.disabled = true;
+      }
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .active{
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id='app'>
+    <ul>
+      <li v-for="(item,index) in author" @click="handleClick(index)" :class="{active: activeIndex === index}">{{item}}</li>
+    </ul>
+  </div>
+
+  <script src='https://cdn.jsdelivr.net/npm/vue'></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        author:["罗贯中","施耐庵","吴承恩","曹雪芹"],
+        // 默认都不选中
+        activeIndex: -1,
+      },
+      methods: {
+        handleClick(index){
+          console.log(index);
+          this.activeIndex = index;
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>

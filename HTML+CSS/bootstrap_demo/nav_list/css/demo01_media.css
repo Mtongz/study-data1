@@ -1,0 +1,113 @@
+@media screen and (max-width: 1440px){
+  html{
+    font-size: 8px;
+  }
+  .logo{
+    max-width: 200px;
+  }
+  .nav-menu{
+    /* max-width: 750px; */
+    margin-right: 15px;
+  }
+  /* 右侧搜索登录注册 */
+  .searchInput{
+    /* display: none; */
+    /* background-color: red; */
+    width: 50vw;
+    position: absolute;
+    top: 64px;
+    left: 50vw;
+    transform:translate(-50%)
+  }
+  .searchInput .search-input{
+    width: 100vw;
+    height: 30px;
+  }
+  .search-icon{
+    height: 33px;
+  }
+  .loginBtn{
+    /* display: none; */
+    /* padding: 1rem; */
+  }
+}
+
+@media screen and (max-width: 1200px){
+  html{
+    font-size: 10px;
+  }
+  .logo{
+    text-align: center;
+    transition: none;
+    max-width: none;
+  }
+  .nav-menu{
+    position: absolute;
+    top: 60px;
+    left: 0;
+    bottom: 0;
+    width: 20vw;
+    height: calc(100vh - 60px);
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: rgba(119, 136, 153, 0.4);
+
+    transform: translateX(-100%);
+    transition: 0.2s ease-in-out;
+  }
+  .nav-menu li{
+    margin: 1vh;
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  /* 侧边导航栏 */
+  .open{
+    transform: translateX(0);
+    transition: 0.2s ease-in-out;
+  }
+  /* 右侧搜索登录注册 */
+  .searchInput{
+    /* display: none; */
+  }
+  .loginBtn{
+    /* display: block; */
+    padding: 1rem;
+  }
+  .loginBtn::after{
+    font-size: 12px;
+  }
+  /* 手风琴按钮 */
+  .nav-btn{
+    display: block;
+    cursor: pointer;
+  }
+  .active div{
+    transition: 0.1s ease-in-out 0.1s;
+  }
+  .active .top-line{
+    transform: rotate(45deg) translate(5px, 6px);
+  }
+  .active .buttom-line{
+    transform: rotate(-45deg) translate(5px, -6px);
+  }
+  .active .middle-line{
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: 0.1s ease-in-out;
+  }
+  
+
+  @keyframes slideIn {
+    from{
+      transform: translateX(-20px);
+      opacity: 0;
+    }
+    to{
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+}

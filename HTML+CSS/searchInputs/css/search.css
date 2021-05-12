@@ -1,0 +1,129 @@
+/* --简洁搜索样式-----------------------------------------1--------------------------------- */
+.parent1 {
+  position: relative; 
+  /* display: flex;2 */
+
+  width: 300px;
+  height: 40px;
+  margin: 10px;
+}
+.search1 {
+  /* flex-grow: 1;2 */
+  width: 300px;
+  height: 40px;
+  border-radius: 18px;
+  outline: none;
+  border: 1px solid #ccc;
+  padding-left: 20px;
+  position: absolute;
+}
+.btn1 {
+  height: 35px;
+  width: 35px;
+  background: url("../images/search.png") no-repeat 1px 2px;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+/* ----百度搜索样式--------------------------------------2------------------------------------ */
+.parent2 {
+  width: 100%;
+  height: 40px;
+  position: relative;
+}
+
+.parent2 .search2 {
+  /*输入框高度设置为40px, border占据2px，总高度为42px*/
+  width: 380px;
+  height: 40px; 
+  border: 1px solid #ccc;
+  font-size: 16px;
+  outline: none;
+}
+
+.parent2 .search2:focus {
+  border: 1px solid #317ef3;
+  padding-left: 10px;
+}
+
+.parent2 .btn2 {
+  /*button按钮border并不占据外围大小，设置高度42px*/
+  width: 100px;
+  height: 40px; 
+  position: absolute;
+  background: #317ef3;
+  border: 1px solid #317ef3;
+  color: #fff;
+  font-size: 16px;
+  outline: none;
+}
+/* ----搜索图标在外搜索样式-----------------------------------------3---------------------------------- */
+.parent3{
+  /* background-color: blueviolet; */
+  display: flex;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
+  min-width: 8% !important;
+}
+.search3{
+  height: 34px;
+  margin-right: -4px;
+  border: none;
+  outline: none;
+  border-radius: 4px 0 0 4px;
+  padding-left: 10px;
+}
+.btn3{
+  /* border: 1px solid #ccc; */
+  height: 34px;
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+
+/* ----动态搜索框(还需完善)----------4-------------------------------------- */
+.parent4{
+  background: #2f3640;
+  height: 50px;
+  border-radius: 50px;
+  /* padding: 10px; */
+  display: flex;
+  /* align-items: center; */
+
+  margin: 20px;
+}
+.parent4:hover>.search4{
+  width: 200px;
+  /* padding: 0 6px; */
+  margin: 10px 0 10px 20px;
+}
+.parent4:hover>.btn4{
+  background: #FF4500;
+}
+.btn4{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #2f3640;
+  cursor: pointer;
+/* 图标居中 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+}
+.search4{
+  width: 0px;
+  border: none;
+  background: none;
+  outline: none;
+  padding: 0px;
+  color: white;
+  font-size: 16px;
+  transition: 0.4s;
+}

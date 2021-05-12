@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /*清除元素默认的内外边距  */
+    * {
+      margin: 0;
+      padding: 0
+    }
+
+    /*让所有斜体 不倾斜*/
+    em,
+    i {
+      font-style: normal;
+    }
+
+    /*去掉列表前面的小点*/
+    li {
+      list-style: none;
+    }
+
+    /*图片没有边框   去掉图片底侧的空白缝隙*/
+    img {
+      border: 0;
+      /*ie6*/
+      vertical-align: middle;
+    }
+
+    /*让button 按钮 变成小手*/
+    button {
+      cursor: pointer;
+    }
+
+    /*取消链接的下划线*/
+    a {
+      color: #666;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #e33333;
+    }
+
+    button,
+    input {
+      font-family: 'Microsoft YaHei', 'Heiti SC', tahoma, arial, 'Hiragino Sans GB', \\5B8B\4F53, sans-serif;
+      /*取消轮廓线 蓝色的*/
+      outline: none;
+    }
+
+    body {
+      background-color: #fff;
+      font: 12px/1.5 'Microsoft YaHei', 'Heiti SC', tahoma, arial, 'Hiragino Sans GB', \\5B8B\4F53, sans-serif;
+      color: #666
+    }
+
+    .hide,
+    .none {
+      display: none;
+    }
+
+    /*清除浮动*/
+    .clearfix:after {
+      visibility: hidden;
+      clear: both;
+      display: block;
+      content: ".";
+      height: 0
+    }
+
+    .clearfix {
+      *zoom: 1
+    }
+
+    /*公共样式*/
+
+    .fl {
+      float: left;
+    }
+
+    .fr {
+      float: right;
+    }
+
+
+
+    .preview_list {
+      position: relative;
+      height: 60px;
+      margin-top: 60px;
+    }
+
+    .list_item {
+      width: 320px;
+      height: 60px;
+      margin: 0 auto;
+    }
+
+    .list_item li {
+      float: left;
+      width: 56px;
+      height: 56px;
+      border: 2px solid transparent;
+      margin: 0 2px;
+    }
+
+    .list_item li.current {
+      border-color: #c81623;
+    }
+
+    .arrow_prev,
+    .arrow_next {
+      position: absolute;
+      top: 15px;
+      width: 22px;
+      height: 32px;
+      background-color: purple;
+    }
+
+    .arrow_prev {
+      left: 0;
+      background: url(./img/arrow-prev.png) no-repeat;
+    }
+
+    .arrow_next {
+      right: 0;
+      background: url(./img/arrow-next.png) no-repeat;
+    }
+
+    .itemInfo_wrap {
+      width: 718px;
+    }
+
+    .sku_name {
+      height: 30px;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .news {
+      height: 32px;
+      color: #e12228;
+    }
+
+    .summary dl {
+      overflow: hidden;
+    }
+
+    .summary dt,
+    .summary dd {
+      float: left;
+    }
+
+    .summary dt {
+      width: 60px;
+      padding-left: 10px;
+      line-height: 36px;
+    }
+
+    .summary_price,
+    .summary_promotion {
+      position: relative;
+      padding: 10px 0;
+      background-color: #fee9eb;
+    }
+
+    .price {
+      font-size: 24px;
+      color: #e12228;
+    }
+
+    .summary_price a {
+      color: #c81623;
+    }
+
+    .remark {
+      position: absolute;
+      right: 10px;
+      top: 20px;
+    }
+
+    .summary_promotion {
+      padding-top: 0;
+    }
+
+    .summary_promotion dd {
+      width: 450px;
+      line-height: 36px;
+    }
+
+    .summary_promotion em {
+      display: inline-block;
+      width: 40px;
+      height: 22px;
+      background-color: #c81623;
+      text-align: center;
+      line-height: 22px;
+      color: #fff;
+    }
+
+    .summary_support dd {
+      line-height: 36px;
+    }
+
+    .choose_color a {
+      display: inline-block;
+      width: 80px;
+      height: 41px;
+      background-color: #f7f7f7;
+      border: 1px solid #ededed;
+      text-align: center;
+      line-height: 41px;
+    }
+
+    .summary a.current {
+      border-color: #c81623;
+    }
+
+    .choose_version {
+      margin: 10px 0;
+    }
+
+    .choose_version a,
+    .choose_type a {
+      display: inline-block;
+      height: 32px;
+      padding: 0 12px;
+      background-color: #f7f7f7;
+      border: 1px solid #ededed;
+      text-align: center;
+      line-height: 32px;
+    }
+
+    .choose_btns {
+      margin-top: 20px;
+    }
+
+    .choose_amount {
+      position: relative;
+      float: left;
+      width: 50px;
+      height: 46px;
+      background-color: pink;
+    }
+
+    .choose_amount input {
+      width: 33px;
+      height: 44px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+
+    .add,
+    .reduce {
+      position: absolute;
+      right: 0;
+      width: 15px;
+      height: 22px;
+      border: 1px solid #ccc;
+      background-color: #f1f1f1;
+      text-align: center;
+      line-height: 22px;
+    }
+
+    .add {
+      top: 0;
+    }
+
+    .reduce {
+      bottom: 0;
+      /*禁止鼠标样式*/
+      cursor: not-allowed;
+      /* pointer  小手  move  移动  */
+    }
+
+    .addcar {
+      float: left;
+      width: 142px;
+      height: 46px;
+      background-color: #c81623;
+      text-align: center;
+      line-height: 46px;
+      font-size: 18px;
+      color: #fff;
+      margin-left: 10px;
+      font-weight: 700;
+    }
+
+    /* 放大镜效果 */
+    .preview_wrap {
+      width: 400px;
+      height: 590px;
+    }
+
+    .preview_img {
+      position: relative;
+      height: 398px;
+      border: 1px solid #ccc;
+    }
+
+    .big {
+      /* display: none; */
+      position: absolute;
+      left: 410px;
+      top: 0;
+      width: 500px;
+      height: 500px;
+      background-color: pink;
+      z-index: 999;
+      border: 1px solid #ccc;
+      overflow: hidden;
+    }
+
+    .big img {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .mask {
+      /* display: none; */
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 300px;
+      height: 300px;
+      background: #FEDE4F;
+      opacity: .5;
+      border: 1px solid #ccc;
+      cursor: move;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="product_intro clearfix">
+    <!-- 预览区域 -->
+    <div class="preview_wrap fl">
+      <!-- 放大镜效果 -->
+      <div class="preview_img">
+        <img src="upload/s3.png" alt="">
+        <div class="mask" style="display: none; left: 0px; top: 0px;"></div>
+        <div class="big" style="display: none;">
+          <img src="upload/big.jpg" alt="" class="bigImg" style="left: 0px; top: 0px;">
+        </div>
+      </div>
+
+      <div class="preview_list">
+        <a href="#" class="arrow_prev"></a>
+        <a href="#" class="arrow_next"></a>
+        <ul class="list_item">
+          <li>
+            <img src="upload/pre.jpg" alt="">
+          </li>
+          <li class="current">
+            <img src="upload/pre.jpg" alt="">
+          </li>
+          <li>
+            <img src="upload/pre.jpg" alt="">
+          </li>
+          <li>
+            <img src="upload/pre.jpg" alt="">
+          </li>
+          <li>
+            <img src="upload/pre.jpg" alt="">
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- 产品详细信息 -->
+    <div class="itemInfo_wrap fr">
+      <div class="sku_name">
+        Apple iPhone 6s（A1700）64G玫瑰金色 移动通信电信4G手机
+      </div>
+      <div class="news">
+        推荐选择下方[移动优惠购],手机套餐齐搞定,不用换号,每月还有花费返
+      </div>
+      <div class="summary">
+        <dl class="summary_price">
+          <dt>价格</dt>
+          <dd>
+            <i class="price">￥5299.00 </i>
+
+            <a href="#">降价通知</a>
+
+            <div class="remark">累计评价612188</div>
+
+          </dd>
+        </dl>
+        <dl class="summary_promotion">
+          <dt>促销</dt>
+          <dd>
+            <em>加购价</em> 满999.00另加20.00元，或满1999.00另加30.00元，或满2999.00另加40.00元，即可在购物车换 购热销商品 详情 》
+
+          </dd>
+        </dl>
+        <dl class="summary_support">
+          <dt>支持</dt>
+          <dd>以旧换新，闲置手机回收 4G套餐超值抢 礼品购</dd>
+        </dl>
+        <dl class="choose_color">
+          <dt>选择颜色</dt>
+          <dd>
+            <a href="javascript:;" class="current">玫瑰金</a>
+            <a href="javascript:;">金色</a>
+            <a href="javascript:;">白色</a>
+            <a href="javascript:;">土豪色</a>
+          </dd>
+        </dl>
+        <dl class="choose_version">
+          <dt>选择版本</dt>
+          <dd>
+            <a href="javascript:;" class="current">公开版</a>
+            <a href="javascript:;">移动4G</a>
+          </dd>
+        </dl>
+        <dl class="choose_type">
+          <dt>购买方式</dt>
+          <dd>
+            <a href="javascript:;" class="current">官方标配</a>
+            <a href="javascript:;">移动优惠购</a>
+            <a href="javascript:;">电信优惠购</a>
+          </dd>
+        </dl>
+        <div class="choose_btns">
+          <div class="choose_amount">
+            <input type="text" value="1">
+            <a href="javascript:;" class="add">+</a>
+            <a href="javascript:;" class="reduce">-</a>
+          </div>
+          <a href="#" class="addcar">加入购物车</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('load', function () {
+      var small = document.querySelector('.preview_img');
+      var mask = document.querySelector('.mask');
+      var big = document.querySelector('.big');
+      small.addEventListener('mouseover', show);
+
+      function show() {
+        mask.style.display = 'block';
+        big.style.display = 'block';
+      }
+      small.addEventListener('mouseout', hide);
+
+      function hide() {
+        mask.style.display = 'none';
+        big.style.display = 'none';
+      }
+      small.addEventListener('mousemove', move);
+
+      function move(e) {
+        var x = e.pageX - this.offsetLeft;
+        var y = e.pageY - this.offsetTop;
+        var maskX = x - mask.offsetWidth / 2;
+        var maskY = y - mask.offsetHeight / 2;
+        // 遮挡层的最大移动距离
+        var maskMax = small.offsetWidth - mask.offsetWidth;
+        if (maskX <= 0) {
+          maskX = 0;
+        } else if (maskX >= maskMax) {
+          maskX = maskMax
+        }
+        // 由于是正方形  所以 offsetWidth和offsetHeight相等
+        if (maskY <= 0) {
+          maskY = 0;
+        } else if (maskY >= maskMax) {
+          maskY = maskMax;
+        }
+        mask.style.left = maskX + 'px';
+        mask.style.top = maskY + 'px';
+        var bigImg = document.querySelector('.bigImg');
+        // 大图最大移动距离
+        var bigMax = bigImg.offsetWidth - big.offsetWidth;
+        // 大图片移动距离 = 遮挡层移动距离 * 大图片最大移动距离 / 遮挡层的最大移动距离
+        var bigX = maskX * bigMax / maskMax;
+        var bigY = maskY * bigMax / maskMax;
+        bigImg.style.left = -bigX + 'px';
+        bigImg.style.top = -bigY + 'px';
+      }
+    })
+  </script>
+</body>
+
+</html>

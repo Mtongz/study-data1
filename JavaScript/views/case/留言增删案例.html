@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    textarea {
+      resize: none;
+    }
+
+    li {
+      width: 300px;
+      margin: 10px;
+      background: pink;
+    }
+
+    li a {
+      float: right;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="message">
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <input type="button" value="发布">
+  </div>
+  <div class="info">
+    <ul>
+
+    </ul>
+  </div>
+
+  <script>
+    var btn = document.querySelector('input');
+    var text = document.querySelector('textarea');
+    var ul = document.querySelector('ul');
+    var time = new Date();
+    var nowTime = time.toLocaleString();
+
+    // console.log(ul);
+    btn.onclick = function () {
+      var textValue = text.value;
+      if (textValue == '') {
+        alert('您为输入任何内容');
+        return false;
+      } else {
+        var li = document.createElement('li'); //创建元素
+        li.innerHTML = textValue + ' ' + nowTime + '<a href="javascript:;">删除</a>';
+        ul.insertBefore(li, ul.children[0]); //添加元素
+        text.value = '';
+        var as = document.querySelectorAll('a');
+        // 删除元素   删除的是当前链接的li   a的父级
+        for (let i = 0; i < as.length; i++) {
+          as[i].onclick = function () {
+            // node.removeChild(child); 注：parent.removeChild(child) 删除的是li 当前a所在的Li this.parentNode
+            ul.removeChild(this.parentNode);
+          }
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

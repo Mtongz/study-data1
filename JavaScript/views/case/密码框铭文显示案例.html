@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      box-sizing: border-box;
+    }
+    .content {
+      position: relative;
+      width: 300px;
+      margin: 30px auto;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .password {
+      width: 250px;
+      height: 30px;
+      border: 0;
+      outline: none;
+      /* background: pink; */
+    }
+
+    .eye {
+      position: absolute;
+      width: 50px;
+      right: 2px;
+      top: 4px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="content">
+      <input type="password" name="password" class="password">
+      <input type="button" value="close" class="eye">
+    </div>
+  </div>
+  <script>
+    var eye = document.querySelector('.eye');
+    var password = document.querySelector('.password');
+    var flag = 0;
+    eye.onclick = function () {
+      if(flag == 0){
+        password.type = 'text';
+        this.value = 'open';
+        flag = 1;
+      }else{
+        password.type = 'password';
+        this.value = 'close';
+        flag = 0;
+      }
+    }
+  </script>
+</body>
+
+</html>

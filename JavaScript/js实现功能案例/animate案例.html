@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .father {
+      position: fixed;
+      top: 300px;
+      left: 0;
+      background: pink;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      color: #fff;
+      line-height: 40px;
+      text-align: center;
+    }
+
+    .son {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 200px;
+      height: 40px;
+      background: pink;
+      z-index: -1;
+    }
+  </style>
+  <script src="../js/animate.js"></script>
+</head>
+
+<body>
+  <div class="father">
+    <span>→</span>
+    <div class="son">
+      <a href="http://www.baidu.com">baidu</a>
+    </div>
+  </div>
+  <script>
+    let father = document.querySelector('.father')
+    let span = document.querySelector('span')
+    let son = document.querySelector('.son')
+    father.addEventListener('mouseenter', function () {
+      animate(son, 0, function () {
+        span.innerHTML = '←'
+      })
+    })
+    father.addEventListener('mouseleave', function () {
+      animate(son, -160, function () {
+        span.innerHTML = '→'
+      })
+    })
+  </script>
+</body>
+
+</html>

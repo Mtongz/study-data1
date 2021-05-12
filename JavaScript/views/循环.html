@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 1．求1-100之间所有数的平均值-->
+  <script type="text/html">
+    var sum = 0,
+    average = 0;
+
+    for (var i = 1; i <= 100; i++) { sum +=i; } console.log(i - 1); average=sum / (i - 1); console.log(average);
+  </script>
+  <!-- 2．求1-100之间所有偶数和奇数的和 -->
+  <script type="text/html">
+    var odd = 0,
+    even = 0;
+    for (var i = 1; i <= 100; i++) { if (i % 2==0) { even +=i; } else { odd +=i; } } console.log('偶数：' + even + '\n'
+      + '奇数：' + odd);
+  </script>
+  <!-- 3．求1-100之间所有能被3整除的数字的和 -->
+  <script type="text/html">
+    var sum = 0;
+
+    for (var i = 1; i <= 100; i++) { if (i % 3==0) { sum +=i; } } console.log('被3整除的和：' + sum);
+  </script>
+  <!-- 4.要求用户输入班级人数，之后依次输入每个学生的成绩，最后打印出该班级总的成绩以及平均成绩。 -->
+  <script type="text/html">
+    var people = Number(prompt('请输入班级人数'));
+    var sum = 0;
+    var average = 0;
+    for (var i = 1; i <= people; i++) { let score=Number(prompt('请输入第' + i + '个学生成绩' )); sum +=score; } average=sum /
+      people; console.log('总成绩为' + sum + '\n' + '平均成绩为' + average);
+  </script>
+  <!-- 5.一行打印五个星星 -->
+  <script type="text/html">
+    str = '';
+    for (var i = 0; i < 5; i++) { str +='☆' ; } console.log(str);
+  </script>
+  <!-- 6.打印十行十列正倒三角星星 -->
+  <script type="text/html">
+    for (var i = 0; i < 10; i++) { for (var j=0; j <=i; j++) { document.write('☆'); } document.write('</br>'); }
+      document.write('</br>'); for (var i=0; i < 10; i++) { for (var j=i; j < 10; j++) { document.write('☆'); }
+      document.write('</br>'); }
+  </script>
+  <!-- 7.九九乘法表 -->
+  <script>
+    for (var i = 1; i <= 9; i++) {
+      for (var j = 1; j <= i; j++) {
+        document.write(j + '*' + i + '=' + i * j + '\t');
+      }
+      document.write('<br>');
+    }
+  </script>
+</body>
+
+</html>

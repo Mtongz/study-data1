@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 1.接收输入的用户名和密码，若用户名为admin密码为123456，则提示用户登录成功！否则让用户一直输入。 -->
+  <script>
+    var username = prompt('用户名：');
+    var password = prompt('密码：');
+    while (username !== 'admin' && password !== '123456') {
+      username = prompt('用户名：');
+      password = prompt('密码：');
+    }
+    alert('登录成功！');
+  </script>
+  <!-- 2.求整数1~100的累加值，但要求跳过所有个位数为3的数（用continue实现） -->
+  <script>
+    var num = 0;
+    for(let i = 1; i <= 100; i++){
+      if(i % 10 == 3){
+        continue;
+      }
+      num+=i;
+    }
+    console.log(num);
+  </script>
+</body>
+
+</html>

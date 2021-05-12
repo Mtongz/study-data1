@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 反转数组
+    function reverse(arr) {
+      var newArr = [];
+      for (let i = arr.length - 1; i >= 0; i--) {
+        newArr[newArr.length] = arr[i];
+      }
+      return newArr;
+    }
+    console.log(reverse([1, 2, 3, 4, 5, 6, 7]));
+    // 优化  增加 参数是否为数组 判断
+    function reverse(arr) {
+      if (Array.isArray(arr)) {
+        var newArr = [];
+        for (let i = arr.length - 1; i >= 0; i--) {
+          newArr[newArr.length] = arr[i];
+        }
+        return newArr;
+      } else {
+        return 'error：参数不是数组格式';
+      }
+    }
+    console.log(reverse([1, 2, 3, 4, 5, 6, 7]));
+    // 进一步优化 增加数组项替换为push
+    function reverse(arr) {
+      if (Array.isArray(arr)) {
+        var newArr = [];
+        for (let i = arr.length - 1; i >= 0; i--) {
+          newArr.push(arr[i]);
+        }
+        return newArr;
+      } else {
+        return 'error：参数不是数组格式';
+      }
+    }
+    console.log(reverse([1, 2, 3, 4, 5, 6, 7]));
+    // 使用 reverse 方法实现翻转
+    let arr = [1, 2, 3, 4, 5, 6, 7];
+    console.log(arr.reverse());
+  </script>
+</body>
+
+</html>

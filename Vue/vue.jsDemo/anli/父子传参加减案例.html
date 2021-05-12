@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id='app'>
+    <h3>点击次数：{{fatherCount}}</h3>
+    <son-btn @increment="changeBtn" @decrement="changeBtn"></son-btn>
+  </div>
+  <template id="sonButton">
+    <div>
+      <button @click="handleAdd">+</button>
+      <button @click="handleSub">-</button>
+    </div>
+  </template>
+  <script src='https://cdn.jsdelivr.net/npm/vue'></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      // -------------------------------------------子组件start------------------------
+      components: {
+        'son-btn': {
+          template: '#sonButton',
+          data() {
+            return {
+              sonCount: 0
+            }
+          },
+          methods: {
+            handleAdd() {
+              this.sonCount++
+              // this.$emit('increment', this.sonCount)  increment为传给父组件的自定义事件，this.sonCount为传给父组件的参数
+              this.$emit('increment', this.sonCount)
+            },
+            handleSub() {
+              this.sonCount--
+              this.$emit('decrement', this.sonCount)
+            }
+          },
+        },
+      },
+      // -------------------------------------------子组件end-------------------------
+      data: {
+        fatherCount: 0
+      },
+      methods: {
+        changeBtn(sonCount) {
+          this.fatherCount = sonCount
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>

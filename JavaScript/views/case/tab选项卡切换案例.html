@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      list-style: none;
+    }
+
+    .tab {
+      width: 978px;
+      margin: 100px auto;
+    }
+
+    .tabItem {
+      height: 40px;
+      border: 1px solid #f1f1f1;
+    }
+
+    .tabItem li {
+      float: left;
+      height: 40px;
+      line-height: 40px;
+      padding: 0 20px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .current {
+      background: crimson;
+      color: white;
+    }
+
+    .tabContent {
+      padding: 20px 0 0 20px;
+    }
+
+    .item {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="tab">
+    <div class="tabItem">
+      <ul>
+        <li class="current">产品介绍</li>
+        <li class="items">规格与包装</li>
+        <li class="items">售后保障</li>
+        <li class="items">商品评价</li>
+        <li class="items">手机社区</li>
+      </ul>
+    </div>
+    <div class="tabContent">
+      <div class="item" style="display: block;">产品介绍内容</div>
+      <div class="item">规格与包装内容</div>
+      <div class="item">售后保障内容</div>
+      <div class="item">商品评价内容</div>
+      <div class="item">手机社区内容</div>
+    </div>
+  </div>
+  <script>
+    var tabs = document.querySelector('.tabItem');
+    var lis = document.querySelectorAll('li');
+    var items = document.querySelectorAll('.item');
+    for (let i = 0; i < lis.length; i++) {
+      lis[i].setAttribute('data-index', i)
+      lis[i].onclick = function () {
+        // 清除所有li元素的类
+        for (let i = 0; i < lis.length; i++) {
+          lis[i].removeAttribute('class');
+        }
+        this.setAttribute('class', 'current');
+        var index = this.getAttribute('data-index');
+        for (let i = 0; i < items.length; i++) {
+          items[i].style.display = 'none';
+        }
+        items[index].style.display = 'block';
+      }
+
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table {
+      margin: auto;
+      border: 1px solid #ccc;
+      border-spacing: 0;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 8px 16px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+
+    th {
+      background-color: #f7f7f7;
+      color: brown;
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+  <div id='app'>
+    <div v-if="!tableData.length">购物车为空</div>
+
+    <div v-else>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>&nbsp;</th>
+            <th>书籍名称</th>
+            <th>出版日期</th>
+            <th>单价</th>
+            <th>购买数量</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(books,index) in tableData">
+            <td>{{books.id}}</td>
+            <td>{{books.name}}</td>
+            <td>{{books.date}}</td>
+            <td>￥{{books.price | price}}</td>
+            <td>
+              <button @click="handleSub(index)" :disabled="books.count <= 1">-</button>
+              {{books.count}}
+              <button @click="handleAdd(index)">+</button>
+            </td>
+            <td>
+              <button @click="handleDel(index)">删除</button>
+            </td>
+          </tr>
+        </tbody>
+        <!-- 另外一个方法   双重遍历 -->
+        <!-- <tbody>
+      <tr v-for="books in tableData">
+        <td v-for="value in books">{{value}}</td>
+        <td><button>删除</button></td>
+      </tr>
+    </tbody> -->
+      </table>
+      <h3>总价：￥{{finalPrice | price}}</h3>
+    </div>
+  </div>
+
+  <script src='https://cdn.jsdelivr.net/npm/vue'></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        tableData: [{
+            id: 1,
+            name: '《算法导论》',
+            date: '2006-9',
+            price: 85.00,
+            count: 1
+          },
+          {
+            id: 2,
+            name: '《UNIX编程艺术》',
+            date: '2006-2',
+            price: 59.00,
+            count: 1
+          },
+          {
+            id: 3,
+            name: '《编程珠玑》',
+            date: '2008-10',
+            price: 39.00,
+            count: 1
+          },
+          {
+            id: 4,
+            name: '《代码大全》',
+            date: '2006-3',
+            price: 128.00,
+            count: 1
+          },
+        ],
+        totalPrice: '',
+      },
+      filters: {
+        price(price) {
+          return price.toFixed(2)
+        },
+
+      },
+      computed: {
+        finalPrice() {
+          // let finalPrice = 0;
+          // for (const key in this.tableData) {
+          //   finalPrice += this.tableData[key].price * this.tableData[key].count;
+          // }
+
+          // return finalPrice;
+
+          // *****************reduce写法***************
+          return this.tableData.reduce(function (preValue, book) {
+            return preValue + book.price * book.count
+          }, 0)
+        }
+
+      },
+      methods: {
+        handleAdd(index) {
+          this.tableData[index].count++;
+        },
+        handleSub(index) {
+          this.tableData[index].count--;
+        },
+        handleDel(index) {
+          this.tableData.splice(index, 1);
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>

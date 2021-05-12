@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      margin: 50px auto;
+    }
+
+    table {
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      border: 1px solid black;
+      padding: 10px 40px;
+    }
+
+    thead>tr {
+      background-color: #0088C9;
+    }
+
+    tbody>tr {
+      background-color: #EEF1EE;
+    }
+
+    tbody>tr:hover {
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="a" index="1">
+    <table border="" cellspacing="" cellpadding="">
+      <thead>
+        <tr>
+          <th>
+            <input type="checkbox" name="" id="chAll" value="" />
+          </th>
+          <th>商品</th>
+          <th>价格</th>
+        </tr>
+      </thead>
+      <tbody id="ch">
+        <tr>
+          <td>
+            <input type="checkbox" name="" id="" value="" /></td>
+          <td>商品一</td>
+          <td>8000</td>
+        </tr>
+        <tr>
+          <td>
+            <input type="checkbox" name="" id="" value="" /></td>
+          <td>商品二</td>
+          <td>5000</td>
+        </tr>
+        <tr>
+          <td>
+            <input type="checkbox" name="" id="" value="" /></td>
+          <td>商品三</td>
+          <td>2000</td>
+        </tr>
+        <tr>
+          <td>
+            <input type="checkbox" name="" id="" value="" /></td>
+          <td>商品四</td>
+          <td>2000</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <script>
+    var checkAll = document.getElementById('chAll');
+    var tbInputs = document.getElementById('ch').querySelectorAll('input');
+    // 1.全选和取消全选的做法：让下面的复选框的checked属性跟随全选按钮
+    checkAll.onclick = function () {
+      for (let i = 0; i < tbInputs.length; i++) {
+        tbInputs[i].checked = this.checked;
+      }
+    }
+    // 2.下面复选框全部选中，上面全选复选框才能选中的做法：给下面所有复选框绑定点击事件
+    // 每次点击都循环查看所有复选框是否选中，存在一个未选中上面的全选复选框就不选中
+    for (let i = 0; i < tbInputs.length; i++) {
+      tbInputs[i].onclick = function () {
+        // flag控制全选按钮是否选中
+        var flag = true;
+        // 每次点击下面的复选框都要循环检查所有复选框是否被全部选中
+        for (let i = 0; i < tbInputs.length; i++) {
+          if (!tbInputs[i].checked) {
+            flag = false
+            break;
+          }
+        }
+        checkAll.checked = flag;
+      }
+    }
+  </script>
+</body>
+
+</html>

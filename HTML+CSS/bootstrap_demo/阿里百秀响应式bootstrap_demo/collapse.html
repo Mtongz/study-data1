@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style>
+    #leftMenu {
+      width: 18%;
+      display: inline-block;
+      box-sizing: border-box;
+    }
+
+    .nav {
+      margin: 0 auto;
+      background-color: #EEEEEE;
+    }
+
+    .nav>li {
+      list-style: none;
+      border: none;
+      border-bottom: none;
+      line-height: 30px;
+      border-top: 1px solid #c6c6c6;
+      border-bottom: 1px solid #c6c6c6;
+      padding: 1% 0 1% 15%;
+      text-align: right;
+    }
+
+    .nav>li label {
+      /* display: inline-block; */
+      vertical-align: middle;
+      float: left;
+    }
+
+    .sub {
+      display: none;
+      background-color: #EEEEEE;
+      text-align: left;
+    }
+
+    .sub>li {
+      list-style: none;
+      padding-left: 15%;
+      font-size: 14px;
+    }
+
+    .sub>li:hover {
+      background-color: #2497FF;
+    }
+
+
+    /* 向上箭头 */
+
+    .triangle-up {
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-bottom: 10px solid #c6c6c6;
+      display: inline-block;
+      margin-right: 5%;
+    }
+
+
+    /* 向下箭头 */
+
+    .triangle-down {
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 10px solid #c6c6c6;
+      display: inline-block;
+      margin-right: 5%;
+    }
+
+    .sub li>a {
+      text-decoration: none;
+      color: #000000;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 左部菜单 -->
+  <div id="leftMenu">
+    <ul class="nav">
+      <li>
+        <label for="">title-1</label>
+        <span class="triangle-down"></span>
+        <ul class="sub">
+          <li><a href="#">title-1-1</a></li>
+          <li><a href="#">title-1-2</a></li>
+          <li><a href="#">title-1-3</a></li>
+          <li><a href="#">title-1-4</a></li>
+          <li><a href="#">title-1-5</a></li>
+          <li><a href="#">title-1-6</a></li>
+          <li><a href="#">title-1-7</a></li>
+          <li><a href="#">title-1-8</a></li>
+          <li><a href="#">title-1-9</a></li>
+          <li><a href="#">title-1-10</a></li>
+          <li><a href="#">title-1-11</a></li>
+          <li><a href="#">title-1-12</a></li>
+          <li><a href="#">title-1-13</a></li>
+          <li><a href="#">title-1-14</a></li>
+        </ul>
+      </li>
+      <li>
+        <label for="">title-2</label>
+        <span class="triangle-down"></span>
+        <ul class="sub">
+          <li><a href="#">title-2-1</a></li>
+          <li><a href="#">title-2-2</a></li>
+          <li><a href="#">title-2-3</a></li>
+          <li><a href="#">title-2-4</a></li>
+          <li><a href="#">title-2-5</a></li>
+          <li><a href="#">title-2-6</a></li>
+          <li><a href="#">title-2-7</a></li>
+          <li><a href="#">title-2-8</a></li>
+          <li><a href="#">title-2-9</a></li>
+          <li><a href="#">title-2-10</a></li>
+          <li><a href="#">title-2-11</a></li>
+          <li><a href="#">title-2-12</a></li>
+          <li><a href="#">title-2-13</a></li>
+          <li><a href="#">title-2-14</a></li>
+        </ul>
+      </li>
+      <li>
+        <label for="">title-3</label>
+        <span class="triangle-down"></span>
+        <ul class="sub">
+          <li><a href="#">title-3-1</a></li>
+          <li><a href="#">title-3-2</a></li>
+          <li><a href="#">title-3-3</a></li>
+          <li><a href="#">title-3-4</a></li>
+          <li><a href="#">title-3-5</a></li>
+          <li><a href="#">title-3-6</a></li>
+          <li><a href="#">title-3-7</a></li>
+          <li><a href="#">title-3-8</a></li>
+          <li><a href="#">title-3-9</a></li>
+          <li><a href="#">title-3-10</a></li>
+          <li><a href="#">title-3-11</a></li>
+          <li><a href="#">title-3-12</a></li>
+          <li><a href="#">title-3-13</a></li>
+          <li><a href="#">title-3-14</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <script src=""></script>
+  <script>
+    $(function () {
+
+      folderMenu()
+
+      function folderMenu() {
+        $('.nav>li').on('click', function () {
+          // 当前ul未展开
+          if ($(this).children('.sub').css('display') == 'none') {
+            // 遍历除了当前ul的其他ul
+            $(this).siblings().each(function (index, ele) {
+              // 若ul的display不为none，说明当前ul为展开状态
+              if ($(ele).children('.sub').css('display') != 'none') {
+                // ul收回
+                $(ele).children('.sub').slideUp(300);
+                // 将朝向上的箭头换为朝向下的
+                $(ele).children('.triangle-up').removeClass('triangle-up').addClass('triangle-down');
+              }
+            })
+            // 展开当前ul
+            $(this).children('.sub').slideDown(300);
+            // 将朝向下的箭头换为朝向上的
+            $(this).children('.triangle-down').removeClass('triangle-down').addClass('triangle-up');
+          } else {
+            // 当前ul已展开
+            $(this).children('.sub').slideUp(300);
+            // 将朝向上的箭头换为朝向下的
+            $(this).children('.triangle-up').removeClass('triangle-up').addClass('triangle-down');
+
+          }
+
+        })
+        $('.sub li').on('click', function (e) {
+          event.stopPropagation(); //阻止子级li点击触发父级点击事件：阻止冒泡
+        })
+      }
+    })
+  </script>
+</body>
+
+</html>

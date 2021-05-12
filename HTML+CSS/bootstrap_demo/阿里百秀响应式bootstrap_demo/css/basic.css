@@ -1,0 +1,50 @@
+@media screen and (max-width: 767px) {
+    .publish h4{
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .nav li a{
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    /* 当屏幕变成小屏和超小屏时 通过将li标签浮动并且宽度按百分比平分 */
+    /* .nav li{
+        float: left;
+        width: 20%;
+    } */
+    .logo{
+        height: 50px;
+    }
+    .nav ul{
+        display: flex;
+        justify-content: space-around;
+    }
+    .nav li{
+        width: 20%;
+    }
+    article{
+        margin-top: 5px;
+    }
+    .news li:nth-child(1){
+        width: 100%;
+    }
+    .news li{
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .container {
+        width: 1280px;
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    .container {
+        width: 1440px;
+    }
+}

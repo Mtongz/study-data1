@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <div></div>
+  <!-- 简单动画函数封装 -->
+  <script>
+    function animate(obj, target, callback) {
+      clearInterval(obj.timer) //解决在有触发条件下开多个定时器的bug
+      obj.timer = setInterval(function () {
+        // 步长公式：(目标值-现在的位置)/10  写在定时器里面
+        var step = (target - obj.offsetLeft) / 10
+        step = step > 0 ? Math.ceil(step) : Math.floor(step)
+        if (obj.offsetLeft == target) {
+          clearInterval(obj.timer)
+          if (callback) {
+            callback()
+          }
+        }
+
+        obj.style.left = obj.offsetLeft + step + 'px'
+      }, 50)
+    }
+    var div = document.querySelector('div')
+    animate(div, 500)
+  </script>
+
+</body>
+
+</html>

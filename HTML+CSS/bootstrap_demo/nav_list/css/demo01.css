@@ -1,0 +1,144 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "PingFang SC", "Microsoft Yahei", sans-serif;
+}
+html{
+  font-size: 10px;
+  /* font-size: 62.5%; */
+}
+/* 导航栏 */
+nav{
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  /* min-width: 768px; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1vw;
+  height: 60px;
+  background-color: rgba(119, 136, 153, 0.4);
+}
+/* 手风琴按钮 */
+.nav-btn{
+  display: none;
+  /* border: 1px solid #fff; */
+}
+.nav-btn div{
+  width: 30px;
+  height: 4px;
+  background-color: #fff;
+  margin: 4px;
+}
+/* logo */
+.logo{
+  flex: 2;
+  /* background-color: red; */
+  text-align: center;
+}
+.logo a{
+  font-size: 34px;
+  font-size: 3.4rem;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: -1px;
+  text-decoration: none;
+}
+/* 导航栏标签 */
+.nav-menu{
+  flex: 10;
+  display: flex;
+  justify-content: space-between;
+  /* max-width: 500px; */
+  letter-spacing: -1px;
+  font-size: 19px;
+  font-size: 1.9rem;
+  font-weight: 600;
+  /* background-color: blue; */
+}
+.nav-menu li{
+  list-style: none;
+}
+.nav-menu li a{
+  text-decoration: none;
+  color: #fff;
+}
+.nav-menu li a:hover{
+  background-color: #eee;
+  color: 	#191970;
+}
+/* 搜索 */
+.searchInput{
+  /* background-color: blueviolet; */
+  flex: 2;
+  display: flex;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  min-width: 8% !important;
+}
+.search-input{
+  height: 30px;
+  margin-right: -4px;
+  border: none;
+  outline: none;
+  border-radius: 4px 0 0 4px;
+  padding-left: 10px;
+}
+.search-icon{
+  /* border: 1px solid #ccc; */
+  height: 34px;
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+/* 登录注册 */
+.loginBtn{
+  position: relative;
+	display: inline-block;
+	padding: 0.5rem 1rem;
+	text-decoration: none;
+	text-align: center;
+	cursor: pointer;
+	user-select: none;
+  color: white;
+}
+.loginBtn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  border-radius: 4px;
+  transition: box-shadow .5s ease, transform .2s ease; 
+  will-change: transform;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+}
+.loginBtn:hover::before {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, .3);
+}
+.loginBtn::after {
+  position: relative;
+  display: inline-block;
+  content: attr(data-title);
+  font-size: 1.6rem;
+  font-size: 16px;
+  transition: transform .2s ease; 
+  font-weight: 600;
+  letter-spacing: 0.1px;
+  will-change: transform;
+}
+
+
+
+header{
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../images/uu.jpg');
+  background-size: cover;
+}

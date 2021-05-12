@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      text-decoration: none;
+    }
+
+    .navList li {
+      float: left;
+      padding: 10px 20px;
+      color: #eee;
+      font-weight: 600;
+      border-radius: 5px;
+      margin-left: 5px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .navList li::after {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      content: '';
+      display: block;
+      width: 0px;
+      height: 0px;
+    }
+
+    .red {
+      background-color: rgb(193, 30, 37);
+    }
+
+    .red::after {
+      /* position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      content: '';
+      display: block;
+      width: 0px;
+      height: 0px; */
+      border: 6px solid rgba(0, 0, 0, 0);
+      border-top-color: rgb(193, 30, 37);
+    }
+
+    .red:hover {
+      background-color: rgb(114, 53, 189);
+    }
+
+    .red:hover:after {
+      border-top-color: rgb(114, 53, 189);
+    }
+
+    .blue {
+      background-color: rgb(9, 123, 180);
+    }
+
+    .blue::after {
+      border: 6px solid rgba(0, 0, 0, 0);
+      border-top-color: rgb(9, 123, 180);
+    }
+    .blue:hover{
+      background-color: rgb(174, 32, 180);
+    }
+    .blue:hover:after{
+      border-top-color: rgb(174, 32, 180);
+    }
+    .purple {
+      background-color: rgb(114, 53, 189);
+    }
+
+    .purple::after {
+      border: 6px solid rgba(0, 0, 0, 0);
+      border-top-color: rgb(114, 53, 189);
+    }
+    .purple:hover{
+      background-color: rgb(193, 30, 37);
+    }
+    .purple:hover::after{
+      border-top-color: rgb(193, 30, 37);
+    }
+    .pink {
+      background-color: rgb(174, 32, 180);
+    }
+
+    .pink::after {
+      border: 6px solid rgba(0, 0, 0, 0);
+      border-top-color: rgb(174, 32, 180);
+    }
+    .pink:hover{
+      background-color: rgb(9, 123, 180);
+    }
+    .pink:hover::after{
+      border-top-color: rgb(9, 123, 180);
+    }
+  </style>
+</head>
+
+<body>
+  <header class="nav">
+    <ul class="navList">
+      <li class="red">五彩导航</li>
+      <li class="blue">五彩导航</li>
+      <li class="purple">五彩导航</li>
+      <li class="pink">五彩导航</li>
+    </ul>
+  </header>
+</body>
+
+</html>

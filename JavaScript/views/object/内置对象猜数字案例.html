@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="../js/utils.js"></script>
+  <script>
+    var random = getRandomInt(1, 50);
+    var i = 0;
+    console.log(random);
+    /*----------------------while---------------------------*/
+    // while (true) {
+    //   var num = prompt('请输入1-50之间的数字,只有10次机会');
+    //   console.log(i);
+    //   if (num > random) {
+    //     alert('大了');
+    //   } else if (num < random) {
+    //     alert('小了');
+    //   } else {
+    //     alert('恭喜你猜对了！');
+    //     break;
+    //   }
+    // }
+    /*------------------dowhile-------------------*/
+    // do {
+    //   var num = prompt('请输入1-10之间的数字')
+    //   if (num > random) {
+    //     alert('大了');
+    //   } else if (num < random) {
+    //     alert('小了');
+    //   }else{
+    //     alert('恭喜你猜对了！');
+    //     break;
+    //   }
+    // } while (num != random);
+    /*--------------------while-------------------*/
+    /*增加只有十次机会功能*/
+    // while (i < 10) {
+    //   var num = prompt('请输入1-50之间的数字,只有10次机会');
+    //   console.log(i);
+    //   if (num > random) {
+    //     alert('大了');
+    //     i++;
+    //   } else if (num < random) {
+    //     alert('小了');
+    //     i++;
+    //   } else {
+    //     alert('恭喜你猜对了！');
+    //     break;
+    //   }
+    // }
+    // if (i == 10) {
+    //   alert('您的机会已经用完！');
+    // }
+    /*----------------------for-----------------------*/
+    for (let i = 1; i <= 10; i++) {
+      var num = prompt('请输入1-50之间的数字,只有10次机会');
+      if (num > random) {
+        alert('大了');
+      } else if (num < random) {
+        alert('小了');
+      } else {
+        alert('恭喜你猜对了！');
+        break;
+      }
+      console.log(i);
+      if (i == 10) {
+        alert('您的机会已经用完！');
+      }
+    }
+  </script>
+</body>
+
+</html>

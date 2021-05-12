@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <div></div>
+  <!-- 简单动画函数封装 -->
+  <script>
+    function animate(obj, target) {
+      clearInterval(obj.timer) //解决在有触发条件下开多个定时器的bug
+      obj.timer = setInterval(function () {
+        if (obj.offsetLeft == target) {
+          clearInterval(obj.timer)
+        }
+        obj.style.left = obj.offsetLeft + 1 + 'px'
+      }, 50)
+    }
+    var div = document.querySelector('div')
+    animate(div, 320)
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+/* CSS Document */
+* {font-family: "å¾®è½¯é›…é»‘";}
+body,h1,h2,h3,h4,h5,h6,p,ul,ol,li,form,img,dl,dt,dd,table,th,td,blockquote,fieldset,div,strong,label,em{margin:0;padding:0;border:0;}
+ul,ol,li{list-style:none;}
+input,button{margin:0;font-size:12px;vertical-align:middle;}
+body{font-size:12px;font-family:Arial, Helvetica, sans-serif; margin:0 auto;}
+table{border-collapse:collapse;border-spacing:0;}
+p{line-height:24px}
+
+.clearfloat{height:0;font-size:1px;clear:both;line-height:0;}
+
+#container{ width:1200px; text-align:left; margin:0 auto; color:#9be3fc;}
+a{color:#333;text-decoration:none;}
+a:hover{color:#ef9b11; }
+
+
+.box{width:1198px;border:1px solid #dcdcdc;padding-bottom:15px;}
+.module-title{POSITION: relative;}
+.module-title h3{font-size:12px;font-weight:normal;color:#666666;height:45px;line-height:45px;padding:0px 9px;border-top:2px solid #999999;margin-top:-1px;margin-bottom:5px;}
+.module-title ul{right:10px;position:absolute;top:10px;}
+.module-title li.next{width:60px;height:20px;line-height:20px;}
+.module-title li a{display:block;overflow:hidden;widtb:100%;cursor:pointer;color:#ffffff;height:100%;background:url(more_ico.jpg) no-repeat right center;color:#999999;}
+#sales-product .module-title LI.next a{height:20px;width:60px;}
+#corner-product-main{}
+#sales-product-main{PADDING-RIGHT: 0px;PADDING-LEFT: 0px;PADDING-BOTTOM: 0px;OVERFLOW: hidden;WIDTH:1180px !important;PADDING-TOP: 9px;POSITION: relative;margin:0px auto;}
+#sales-product-main ul{WIDTH:1180px;}
+#sales-product-main LI A.a1{DISPLAY: block;MARGIN: 0px auto;VERTICAL-ALIGN: middle;WIDTH: 187px;HEIGHT: 178px;TEXT-ALIGN: center}
+#sales-product-main LI A.sales-product-pic span{DISPLAY: inline-block;VERTICAL-ALIGN: middle;WIDTH: 0px}
+#sales-product-main LI SPAN.price_symbol{FONT-SIZE: 23px;LINE-HEIGHT:20px}
+#sales-product-main ul{}
+#sales-product-main ul li{width:180px;float:left;margin-right:20px;}
+#sales-product-main ul li a{display:block;}
+#sales-product-main ul li a span{display:block;height:30px;line-height:30px;overflow:hidden;color:#666666;text-align:center;}
+#sales-product-main ul li a span:hover{color:#ff8400; text-decoration:underline;}
+#sales-product-main ul li em{font-size:14px;color:#ff8400;font-weight:bold;font-style:normal;height:18px;line-height:18px;overflow:hidden;text-align:center;display:block;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

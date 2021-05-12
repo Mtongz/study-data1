@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //1. ES5 [1,2,2,3,4,55,55] //[1,2,3,55]
+    function uniqueES5(arr) {
+      var res = arr.filter((item, index, array) => {
+        return array.indexOf(item) === index;
+      })
+      return res;
+    }
+    var arr = [1, 2, 2, 3, 3, 5, 88, 99, 44, 88, 4, 55, 55];
+    console.log(uniqueES5(arr));
+    // 2. 使用indexOf实现数组去重
+    function uniqueIndexOf(arr) {
+      var newArr = []
+      for (let i = 0; i < arr.length; i++) {
+        if (newArr.indexOf(arr[i]) === -1) {
+          newArr.push(arr[i]);
+        }
+      }
+      return newArr;
+    }
+    console.log(uniqueIndexOf([1, 2, 2, 3, 4, 55, 55]));
+    // 3. ES6
+    /*
+      var uniqueES6 = function (arr){
+        // 两种转回数组的方法，set是ES6中引入的新的数据类型。set只允许存储不重复的值，所以当你放入一个数组，它会自动去掉重复的值。
+        return [...new Set(arr)];
+        // return Array.from(new Set(arr))
+      }
+    */
+    var uniqueES6 = arr => [...new Set(arr)];
+    var m = uniqueES6(arr);
+    console.log(m);
+    console.log(uniqueES6(arr));
+  </script>
+</body>
+
+</html>

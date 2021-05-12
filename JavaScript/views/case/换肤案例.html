@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    body{
+      background: url('../../images/swiper1.png');
+      /* background-position: center; */
+      background-size: cover;
+    }
+    ul{
+      display: flex;
+      justify-content: center;
+      width: 1920px;
+      height: 1000px;
+      align-items: center;
+    }
+    ul li{
+      padding: 5px;
+      width: 200px;
+      background: white;
+      cursor: pointer;
+      /* float: left; */
+    }
+    img{
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li><img src="../../images/swiper1.png" ></li>
+    <li><img src="../../images/swiper2.png" ></li>
+    <li><img src="../../images/swiper3.png" ></li>
+    <li><img src="../../images/swiper4.png" ></li>
+  </ul>
+  <script>
+    var imgs = document.querySelectorAll('img');
+    for (let i = 0; i < imgs.length; i++) {
+      imgs[i].onclick = function () {
+        document.body.style.background = 'url('+this.src+')';
+      }
+    }
+  </script>
+</body>
+</html>

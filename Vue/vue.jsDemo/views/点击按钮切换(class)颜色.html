@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .active {
+      color: red;
+    }
+
+    .line {
+      border-bottom: 1px solid #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <div id='app'>
+    <h3 :class="getClasses()" @click="handleClick">{{message}}</h3>
+
+  </div>
+
+  <script src='https://cdn.jsdelivr.net/npm/vue'></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello World',
+        isActive: true,
+        isLine: false
+      },
+      methods: {
+        handleClick() {
+          this.isActive = !this.isActive;
+          this.isLine = !this.isLine;
+        },
+        getClasses() {
+          return {active: this.isActive,line: this.isLine}
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 用while循环实现
+    var arr = ['red', 'blue', 'red', 'green', 'pink', 'red', 'red', 'blue', 'blue'];
+    var index = arr.indexOf('red');
+    var num = 0;
+    while (index !== -1) {
+      console.log(index);
+      num++;
+      index = arr.indexOf('red', index + 1);
+    }
+    console.log('red出现的次数是：' + num);
+    // 用for实现
+    var num = 0;
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] == 'red') {
+        console.log(i);
+        num++;
+      }
+    }
+    console.log('red出现的次数是：' + num);
+// ************************************************************
+    function arrIndex(element, arr) {
+      var num = 0;
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i] == element) {
+          console.log(i);
+          num++;
+        }
+      }
+      console.log(element + '出现的次数是：' + num);
+    }
+    arrIndex('blue', arr);
+    // 过滤  filter
+    var num = 0;
+    var arrFilter = arr.filter(function (item, index, Array) {
+      if (item == 'red') {
+        console.log(index);
+        num++;
+      }
+    })
+    console.log('red出现的次数是：' + num);
+// ***************************************************
+    function arrFilter(element, arr) {
+      var num = 0;
+      arr.filter(function (item, index, Array) {
+        if (item == element) {
+          console.log(index);
+          num++;
+        }
+      })
+      console.log('red出现的次数是：' + num);
+    }
+    // console.log(arrFilter);
+  </script>
+</body>
+
+</html>

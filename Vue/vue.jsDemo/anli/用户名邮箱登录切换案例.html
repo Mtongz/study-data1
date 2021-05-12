@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .toggle {
+      cursor: pointer;
+    }
+
+    .toggle:hover {
+      text-decoration: underline;
+    }
+
+    .username {
+      display: flex;
+    }
+  </style>
+</head>
+
+<body>
+  <div id='app'>
+    <form>
+      <div class="username">
+        <div class="phone" v-if="isUser">
+          <label>手机号：</label>
+          <input type="text" placeholder="请输入手机号" key="phone">
+        </div>
+        <div class="email" v-else>
+          <label>用户名：</label>
+          <input type="email" placeholder="请输入用户名" key="email">
+        </div>
+        <span class="toggle" @click="handleClick">切换类型</span>
+      </div>
+      <input type="button" value="登录">
+    </form>
+  </div>
+
+  <script src='https://cdn.jsdelivr.net/npm/vue'></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        isUser: true
+      },
+      methods: {
+        handleClick() {
+          this.isUser = !this.isUser;
+
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>

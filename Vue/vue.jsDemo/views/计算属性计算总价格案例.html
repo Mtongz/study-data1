@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id='app'>
+    <div v-cloak>总价格：{{totalPrice}}</div>
+    <div v-cloak>价格:{{totalPrice1}}</div>
+    <div v-cloak>z总:{{totalPrice2}}</div>
+    <div v-cloak>总:{{totalPrice3}}</div>
+    <!-- <div v-cloak>总:{{totalPrice4}}</div> -->
+  </div>
+
+  <script src='https://cdn.jsdelivr.net/npm/vue'></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        books: [{
+          id: 1,
+          name: '三国演义',
+          price: 55
+        }, {
+          id: 2,
+          name: '西游记',
+          price: 54
+        }, {
+          id: 3,
+          name: '水浒传',
+          price: 53
+        }, {
+          id: 4,
+          name: '红楼梦',
+          price: 54
+        }]
+      },
+      computed: {
+        totalPrice: function () {
+          let result = 0;
+          for (let i = 0; i < this.books.length; i++) {
+            result += this.books[i].price;
+          }
+          return result.toFixed(2);
+        },
+        totalPrice1: function () {
+          let result = 0;
+          for (const key in this.books) {
+            result += this.books[key].price;
+          }
+          return result.toFixed(2);
+        },
+        totalPrice2: function () {
+          let result = 0;
+          for (const item of this.books) {
+            result += item.price;
+          }
+          return result.toFixed(2);
+        },
+        totalPrice3: function () {
+          let result = 0;
+          this.books.forEach(item => {
+            result += item.price;
+          });
+          return result.toFixed(2);
+        },
+        // totalPrice4: function () {
+        //   let arr = this.books;
+        //   let result = arr.reduce(function (pre, cur,arr) {
+        //     console.log(pre.price);
+        //     console.log(cur.price);
+        //     console.log(pre.price, cur.price); //输出的是第一项的值或上一次叠加的结果，正在被处理的元素，正在被处理的元素的索引值
+        //     let results = pre.price + cur.price;
+        //     return results;
+        //   })
+        // }
+      },
+      methods: {
+
+      },
+    })
+  </script>
+</body>
+
+</html>

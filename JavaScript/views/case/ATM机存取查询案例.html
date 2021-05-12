@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 
+    里面现存有100块钱。
+    如果存钱，就用输入钱数加上先存的钱数之后弹出显示余额提示框.
+    如果取钱，就减去取的钱数，之后弹出显示余额提示框.
+    如果显示余额，就输出余额.
+    如果退出，弹出退出信息提示框
+  -->
+  <!-- 
+    解析
+    1.初始化 num = 100
+    2.type = 1存钱2取钱3查询4退出 4种类型  
+    3.switch case1234 > 
+   -->
+  <script>
+    let num = 100;
+    let type = Number(prompt('请输入您要的操作：' + '\n' + '1.存钱' + '2.取钱' + '3.显示余额' + '4.退出'));
+    while (type != 4) {
+      switch (type) {
+        case 1:
+          // console.log('存钱');
+          let add = Number(prompt('请输入要存的金额：'));
+          num += add;
+          alert('您的余额为：'+num)
+          break;
+        case 2:
+          // console.log('取钱');
+          let sub = Number(prompt('请输入要取的金额：'));
+          num -= sub;
+          alert('您的余额为：'+num)
+          break;
+        case 3:
+          // console.log('显示余额');
+          alert('您的存款为：'+num)
+          break;
+        default:
+          alert('请输入正确的选项！')
+          break;
+      }
+      type = Number(prompt('请输入您要的操作：' + '\n' + '1.存钱' + '2.取钱' + '3.显示余额' + '4.退出'));//不懂
+    }
+    alert('正在退出，请稍等。')
+  </script>
+</body>
+
+</html>

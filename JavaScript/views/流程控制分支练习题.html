@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 1.判断时间阶段。比如用户输入12点弹出中午好用户输入18点弹出傍晚好用户输入23点弹出深夜好 -->
+  <script type="text/html">
+    var now = new Date();
+    var nowHour = now.getHours();
+    if(nowHour<=6){ alert('凌晨好！'); }else if(nowHour <=9){ alert('早上好！'); }else if(nowHour <=11){ alert('上午好！'); }else
+      if(nowHour <=13){ alert('中午好！'); }else if(nowHour <=17){ alert('下午好！'); }else if(nowHour <=22){ alert('晚上好！');
+      }else{ alert('夜里好！'); }
+  </script>
+  <!-- 2.比较两个数的最大值（用户依次输入2个值，最后弹出最大的那个值) -->
+  <script type="text/html">
+    var num1 = prompt('请随机输入你喜欢的第一个数：');
+    var num2 = prompt('请随机输入你喜欢的第二个数：');
+    max = num1 > num2 ? num1 : num2;
+    alert('最大值是：' + max);
+  </script>
+  <!-- 3.用户输入一个数，来判断是奇数还是偶数 -->
+  <script type="text/html">
+    var num = prompt('请随机输入你喜欢的一个数：');
+    if(num % 2 ==0){
+    alert('偶数');
+    }else{
+    alert('奇数');
+    }
+  </script>
+  <!-- 4.根据用户输入的数值(数字1到数字7)，返回星期几 -->
+  <script type="text/html">
+    var day = Number(prompt('请输入数字1-7：'));
+    switch (day) {
+    case 1:
+    alert('星期一');
+    break;
+    case 2:
+    alert('星期二');
+    break;
+    case 3:
+    alert('星期三');
+    break;
+    case 4:
+    alert('星期四');
+    break;
+    case 5:
+    alert('星期五');
+    break;
+    case 6:
+    alert('星期六');
+    break;
+    case 7:
+    alert('星期日');
+    break;
+    default:
+    alert('请输入正确的数字！');
+    break;
+    }
+  </script>
+  <!-- 5.接收班长口袋里的钱数?若大于等于2000，请大家吃西餐。若小于2000，大于等于1500，请大家吃快餐。若小于1500，大于等于1000，请大家喝饮料。若小于1000，大于等于500，请大家吃棒棒糖。否则提醒班长下次把钱带够 -->
+  <script type="text/html">
+    var money = Number(prompt('请输入班长拥有的money'));
+    if(money>=2000){
+    alert('请大家吃西餐。');
+    }else if(money>=1500){
+    alert('请大家吃快餐。');
+    }else if(money>=1000){
+    alert('请大家喝饮料。');
+    }else if(money>=500){
+    alert('请大家吃棒棒糖。');
+    }else{
+    alert('请班长下次把钱带够。');
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id='app'>
+    <cpn :smessage="message" :sactive="active"></cpn>
+    <!-- 驼峰写法 -->
+    <!-- <cpn :s-message="message" :s-active="active"></cpn> -->
+  </div>
+
+  <template id="son">
+    <div>
+      {{smessage}}
+      {{sactive}}
+      <!-- 驼峰写法
+        {{sMessage}}
+        {{sActive}} 
+      -->
+    </div>
+  </template>
+  <script src='https://cdn.jsdelivr.net/npm/vue'></script>
+  <script>
+    const cpn = {
+      template: '#son',
+      // props有多种写法
+      // 1.数组写法，实际开发不常用
+      // props: ['smessage', 'sactive'],
+      // 2.对象写法
+      props: {
+        // 2.1 类型限制
+        // smessage: String,
+        // sactive: Array,
+        // 2.2 提供默认值，以及必传值
+        smessage: {
+          type: String,
+          default: 'vue',
+          required: true
+        },
+        // 类型是对象或者数组时, 默认值必须是一个函数
+        sactive: {
+          type: Array,
+          default () {
+            return []
+          }
+        },
+        // 驼峰写法
+        // sMessage: {
+        //   type: String,
+        //   default: 'vue',
+        //   required: true
+        // },
+        // sActive: {
+        //   type: Array,
+        //   default () {
+        //     return []
+        //   }
+        // }
+      },
+      data() {
+        return {}
+      }
+    }
+    const app = new Vue({
+      el: '#app',
+      components: {
+        cpn
+      },
+      data: {
+        message: 'hello vue',
+        active: ['跳', '踢', '打', '拍']
+      },
+      methods: {
+
+      },
+    })
+  </script>
+</body>
+
+</html>

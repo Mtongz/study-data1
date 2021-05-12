@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var str = 'sjhsdkasdhaufrwq8412qwor8923423889234234';
+    console.log('1--------' + str.length);
+
+    function substrElement(index) {
+      return str.substring(index, 1)
+    }
+    console.log('2--------' + substrElement(0));
+
+    function hasElement(e) {
+      return str.indexOf(e) !== -1
+    }
+    console.log('3--------' + hasElement('0'));
+
+    function replaceElement(substr, newSubStr) {
+      return str.replace(substr, newSubStr)
+    }
+    console.log('4--------' + replaceElement('s', 22));
+
+    function sliceElement(start, end) {
+      return str.slice(start, end)
+    }
+    console.log('5--------' + sliceElement(0, 5));
+
+    function filterElement(str) {
+      var obj = {};
+      for (let i = 0; i < str.length; i++) {
+        var chars = str.charAt(i);
+        if (obj[chars]) {
+          obj[chars]++;
+        } else {
+          obj[chars] = 1;
+        }
+      }
+      console.log(obj);
+      var max = 0;
+      var index = '';
+      for (let k in obj) {
+        if (obj[k] > max) {
+          max = obj[k];
+          index = k;
+        }
+      }
+      console.log('6---------' + '最大值：' + index +'===='+ '出现次数：' + max);
+    }
+    filterElement(str);
+  </script>
+</body>
+
+</html>

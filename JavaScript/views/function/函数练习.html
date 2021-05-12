@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 计算累加
+    function accumulation(start, end) {
+      var sum = 0;
+      for (let i = start; i <= end; i++) {
+        sum += i;
+      }
+      console.log(sum);
+    }
+
+    // 比较两个数的大小
+    function biggerNum(num1, num2) {
+      return num1 > num2 ? num1 : num2;
+    }
+
+    // 求数组的最大值
+    function biggerArr(arr) {
+      return Math.max.apply(null, arr);
+    }
+    /*
+    var res = biggerArr([2,5,11,4,7,66,101])
+    console.log(res);
+    */
+
+    //写一个函数，用户输入任意两个数字的任意算术运算（简单的计算器小功能），并能弹出运算后的结果.
+    function calc(num1, symbol, num2) {
+      switch (symbol) {
+        case '+':
+          return num1 + num2;
+          break;
+        case '-':
+          return num1 - num2;
+          break;
+        case '*':
+          return num1 * num2;
+          break;
+        case '/':
+          return num1 / num2;
+          break;
+
+        default:
+          break;
+      }
+    }
+    // alert(calc(5,'-',6))
+
+    //写一个函数，用户输入任意两个数字求最大值，并能出弹运算后的结果。
+    function big(num1, num2) {
+      return num1 > num2 ? num1 : num2;
+    }
+    // alert(big(10,6))
+
+    //写一个函数，用户输入任意三个不同数字求最大值，并能出弹运算后的结果。
+    function arrMax(arr) {
+      return Math.max.apply(null, arr);
+    }
+    // alert(arrMax([5,10,7]))
+
+    //写一个函数，用户输入一个数判断是否是素数，并返弹出回值(又叫质数，只能被1和自身整数的数)
+    function prime(num) {
+      for (let i = 2; i < num; i++) {
+        if (num % i == 0) {
+          return num + '不是质数'
+        }
+      }
+      return num + '是质数'
+    }
+    // alert(prime(prompt('请输入一个数：')));
+
+  </script>
+</body>
+
+</html>

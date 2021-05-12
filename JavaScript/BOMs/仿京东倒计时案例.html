@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 50px;
+      height: 50px;
+      background: black;
+      color: white;
+      float: left;
+      margin-left: 5px;
+      line-height: 50px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box hour">1</div>
+  <div class="box minute">2</div>
+  <div class="box second">3</div>
+  <script>
+    var hour = document.querySelector('.hour');
+    var minute = document.querySelector('.minute');
+    var second = document.querySelector('.second');
+
+    var iputTime = +new Date('2021-5-1 00:00:00');
+    formatTime();   //先调用一次，防止页面第一次刷新有空白;
+    setInterval(formatTime, 1000);
+
+    function formatTime() {
+      // 1.获取当前时间的时间戳
+      // 2.获取用户输入时间的时间戳
+      // 3.计算倒计时的时间戳
+      var nowTime = +new Date();
+      var countTime = iputTime - nowTime;
+      // 4.将倒计时时间戳转换为总秒数
+      var times = countTime / 1000;
+      // 5.时分秒的转换
+      var h = parseInt(times / 60 / 60 % 24);
+      h = h >= 10 ? h : '0' + h;
+      hour.innerHTML = h;
+      var m = parseInt(times / 60 % 60);
+      m = m >= 10 ? m : '0' + m;
+      minute.innerHTML = m;
+      var s = parseInt(times % 60)
+      s = s >= 10 ? s : '0' + s;
+      second.innerHTML = s;
+    }
+  </script>
+</body>
+
+</html>

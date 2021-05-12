@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var date = new Date();
+    console.log(date.getFullYear()); //返回当前的年份
+    console.log(date.getMonth()); //返回当前的月份  返回的月份是0-11 所以真正的月份是+1
+    console.log(date.getDate()); //返回当前是几号  
+    console.log(date.getDay()); //返回当前是周几 返回0-6 周日是0  之后正常
+
+    // 星期的特殊处理
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var dates = date.getDate();
+    var arrDay = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']; //分别对应0123456
+    var day = date.getDay();
+    console.log('今天是: ' + year + '年' + month + '月' + dates + '日 ' + arrDay[day]);
+
+    function double(time) {
+      return time < 10 ? '0' + time : time;
+    }
+    var h = date.getHours();
+    h = double(h)
+    var m = date.getMinutes();
+    m = double(m)
+    var s = date.getSeconds();
+    s = double(s)
+    console.log(h + ':' + m + ':' + s);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 交换两变量的值
+
+    //1.定义一个中间变量 temp
+    //2.将var1 赋值给 temp
+    //3.将var2 赋值给 var1
+    //4.将temp 赋值给 var2
+    var temp, var1 = 1,
+      var2 = 2;
+    temp = var1;
+    var1 = var2;
+    var2 = temp;
+
+    // 此案例要求在页面中弹出一个输入框，我们输入出生年份后，能计算出我们的年龄。
+
+    var birth = Number(prompt('请输入出生年份:'));
+    var date = new Date;
+    var year = date.getFullYear();
+    console.log(date);
+    console.log(year);
+    var age = year - birth;
+    alert('您的年龄是：' + age);
+
+
+
+    // 计算两个数的值，用户输入第一个值后，继续单出第二个输入框并输入第二个值，最后通过弹出窗口显示出两次输入值相加的结果。
+
+    var num1 = Number(prompt('请输入第一个值：'));
+    var num2 = Number(prompt('请输入第二个值：'));
+    var addResult = parseFloat(num1) + parseFloat(num2);
+    alert('您的结果是：' + addResult);
+
+
+    // 一次询问并获取用户的姓名、年龄、性别并一次性打印出用户信息。
+    var name = prompt('请输入姓名：');
+    var age = prompt('请输入年龄：');
+    var sex = prompt('请输入性别：');
+    alert('您的姓名是：' + name + '\n' + '您的年龄是：' + age + '\n' + '您的性别是：' + sex);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .nav {
+      width: 900px;
+      height: 42px;
+      margin: 100px auto;
+      position: relative;
+
+    }
+
+    .nav ul {
+      position: absolute;
+    }
+
+    .nav li {
+      float: left;
+      width: 100px;
+      text-align: center;
+      line-height: 42px;
+    }
+
+    .nav li a {
+      display: inline-block;
+      text-decoration: none;
+      color: #333;
+      height: 42px;
+    }
+
+    .nav li a:hover {
+      color: white;
+    }
+    .cloud {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100px;
+      height: 42px;
+      background: url(./img/logo.png);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 鼠标经过某个li，筋斗云跟到该li -->
+  <!-- 鼠标离开导航栏，筋斗云回到原来的li的位置 -->
+  <!-- 鼠标点击某个li，筋斗云就停留在该li上 -->
+  <nav class="nav">
+    <span class="cloud"></span>
+    <ul>
+      <li class="current"><a href="#">首页新闻</a></li>
+      <li><a href="#">师资力量</a></li>
+      <li><a href="#">活动策划</a></li>
+      <li><a href="#">企业文化</a></li>
+    </ul>
+  </nav>
+  <script src="../js/animate.js"></script>
+  <script>
+    window.addEventListener('load', function () {
+      var nav = document.querySelector('.nav')
+      var cloud = document.querySelector('.cloud')
+      var lis = nav.querySelectorAll('li')
+      var current = 0;
+      for (let i = 0; i < lis.length; i++) {
+        lis[i].addEventListener('mouseenter', function () {
+          animate(cloud, this.offsetLeft)
+        })
+        lis[i].addEventListener('mouseleave', function () {
+          animate(cloud, current)
+        })
+        lis[i].addEventListener('click', function () {
+          current = this.offsetLeft
+          lis[i].style.color = 'white'
+        })
+      }
+    })
+    // window.addEventListener('load', function () {
+    //   // 1. 获取元素
+    //   var cloud = document.querySelector('.cloud');
+    //   var c_nav = document.querySelector('.nav');
+    //   var lis = c_nav.querySelectorAll('li');
+    //   // 2. 给所有的小li绑定事件 
+    //   // 这个current 做为筋斗云的起始位置
+    //   var current = 0;
+    //   for (var i = 0; i < lis.length; i++) {
+    //     // (1) 鼠标经过把当前小li 的位置做为目标值
+    //     lis[i].addEventListener('mouseenter', function () {
+    //       animate(cloud, this.offsetLeft);
+    //     });
+    //     // (2) 鼠标离开就回到起始的位置 
+    //     lis[i].addEventListener('mouseleave', function () {
+    //       animate(cloud, current);
+    //     });
+    //     // (3) 当我们鼠标点击，就把当前位置做为目标值
+    //     lis[i].addEventListener('click', function () {
+    //       current = this.offsetLeft;
+    //     });
+    //   }
+    // })
+  </script>
+</body>
+
+</html>

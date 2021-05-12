@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id='app'>
+    1
+    <local>app局部</local>
+    <global>app全局</global>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div id='app1'>
+    2
+    <local>app1局部</local>
+    <global>app1全局</global>
+  </div>
+
+  <script src='https://cdn.jsdelivr.net/npm/vue'></script>
+  <script>
+    const local = Vue.extend({
+      template: `
+        <div>hello Vue local</div>
+      `
+    })
+    const global = Vue.extend({
+      template: `
+        <div>hello Vue global</div>
+      `
+    })
+    // 全局组件注册
+    Vue.component('global', global)
+    const app = new Vue({
+      el: '#app',
+      // 局部组件注册
+      components: {
+        local: local
+      },
+      data: {
+
+      },
+      methods: {
+
+      },
+    })
+    const app1 = new Vue({
+      el: '#app1',
+      data: {
+
+      },
+      methods: {
+
+      },
+    })
+  </script>
+</body>
+
+</html>

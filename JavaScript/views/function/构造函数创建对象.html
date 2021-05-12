@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function Wzry(name, type, blood, attack) {
+      this.name = name;
+      this.type = type;
+      this.blood = blood;
+      this.attack = attack;
+    }
+
+    var lp = new Wzry('廉颇', '力量型', '500血量', '攻击：近战');
+    var hy = new Wzry('后羿', '射手型', '100血量', '攻击：远程');
+
+
+    function Computer(color, weight, brand, model) {
+      this.color = color;
+      this.weight = weight;
+      this.brand = brand;
+      this.model = model;
+      this.fn = function () {};
+    }
+    var computer = new Computer('银色','2.5kg','HP','暗影精灵')
+    computer.fn('看电影');
+    
+    function Button(height, weight, background) {
+      this.height = height;
+      this.weight = weight;
+      this.background = background;
+      this.click = function () {};
+    }
+
+    function Car(color, weight, brand) {
+      this.color = color;
+      this.weight = weight;
+      this.brand = brand;
+      this.func = function () {};
+    }
+  </script>
+</body>
+
+</html>

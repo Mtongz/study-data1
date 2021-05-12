@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+
+<body>
+  <div id="app">
+    <button @click="handleChange">内容反转</button>
+    <p>{{message}}</p>
+  </div>
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        message: 'Hello World!'
+      },
+      methods: {
+        handleChange() {
+          this.message = this.message.split('').reverse().join('');
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>

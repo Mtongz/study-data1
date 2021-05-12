@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .div {
+      width: 1280px;
+      height: 300px;
+      margin: 20px auto 0px;
+    }
+
+    .div:nth-child(odd) {
+      background: red;
+    }
+
+    .div:nth-child(even) {
+      background: pink;
+    }
+
+    .slider-bar {
+      position: absolute;
+      left: 50%;
+      top: 660px;
+      margin-left: 640px;
+      width: 45px;
+      height: 130px;
+      background-color: pink;
+    }
+
+    .goback {
+      display: none;
+      position: absolute;
+      bottom: 0;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="slider-bar">
+    <span class="goback">返回顶部</span>
+  </div>
+  <header class="div">header</header>
+  <nav class="div">nav</nav>
+  <section class="div banner">banner</section>
+  <footer class="div">footer</footer>
+  <footer class="div footer">footer</footer>
+  <footer class="div">footer</footer>
+  <footer class="div">footer</footer>
+
+  <script>
+    var slider = document.querySelector('.slider-bar');
+    var nav = document.querySelector('nav');
+    // nav.offsetTop就是nav被卷去头部的大小，一定要写在滚动的外面
+    var navTop = nav.offsetTop;
+    var sliderbarTop = slider.offsetTop - navTop;
+    var footer = document.querySelector('.footer');
+    var footerTop = footer.offsetTop;
+    var goback = document.querySelector('.goback');
+    document.addEventListener('scroll', function () {
+      if (window.pageYOffset >= navTop) {
+        slider.style.position = 'fixed';
+        slider.style.top = sliderbarTop + 'px';
+      } else {
+        slider.style.position = 'absolute';
+        slider.style.top = '660px';
+      }
+      if (window.pageYOffset >= footerTop) {
+        goback.style.display = 'block';
+      } else {
+        goback.style.display = 'none';
+      }
+    })
+    goback.addEventListener('click', function () {
+      animate(window,0)
+    })
+    function animate(obj, target, callback) {
+      clearInterval(obj.timer) //解决在有触发条件下开多个定时器的bug
+      obj.timer = setInterval(function () {
+        // 步长公式：(目标值-现在的位置)/10  写在定时器里面
+        var step = (target - window.pageYOffset) / 10
+        step = step > 0 ? Math.ceil(step) : Math.floor(step)
+        if (window.pageYOffset == target) {
+          clearInterval(obj.timer)
+          if (callback) {
+            callback()
+          }
+        }
+
+        // obj.style.left = window.pageYOffset + step + 'px'
+        window.scroll(0,window.pageYOffset + step)
+      }, 15)
+    }
+  </script>
+</body>
+
+</html>

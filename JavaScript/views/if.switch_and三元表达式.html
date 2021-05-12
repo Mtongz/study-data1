@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 输入年龄，判断是否能进入网吧 -->
+  <script type="text/html">
+    var age = prompt('请输入年龄：');
+    if(age >= 18){
+    alert('请进入网吧');
+    }else{
+    alert('您未满18周岁');
+    }
+  </script>
+  <!-- 检测输入的年份是否为闰年 -->
+  <script type="text/html">
+    var year = Number(prompt('请输入想要检测的年份：'));
+    if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+    alert('闰年');
+    } else {
+    alert('平年');
+    }
+  </script>
+  <!-- 判断成绩等级 -->
+  <script type="text/html">
+    var score = Number(prompt('请输入学生的分数：'));
+    if (score >= 90) {
+    alert('A');
+    } else if (score >= 80) {
+    alert('B');
+    } else if (score >= 70) {
+    alert('C');
+    } else if (score >= 60) {
+    alert('D');
+    } else if (score < 60) { alert('E'); }
+  </script>
+  <!-- 三元判断<10在数字前面加0 -->
+  <script type="text/html">
+    var num = Number(prompt('请输入数字：'));
+    var numS = num>10?num:'0'+num;
+    alert(numS);
+  </script>
+  <script type="text/html">
+    var fruits = prompt('请输入您要购买的水果：');
+    switch (fruits) {
+    case '苹果':
+    alert('该水果的价格是：15');
+    break;
+    case '草莓':
+    alert('该水果的价格是：30');
+    break;
+    case '车厘子':
+    alert('该水果的价格是：60');
+    break;
+    case '葡萄':
+    alert('该水果的价格是：25');
+    break;
+    default:
+    alert('没有此水果');
+    break;
+    }
+  </script>
+</body>
+
+</html>
