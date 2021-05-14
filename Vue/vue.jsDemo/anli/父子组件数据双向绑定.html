@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id='app'>
+    <son :snum1="num1" :snum2="num2" @num1change="num1change" @num2change="num2change" />
+  </div>
+  <template id="son">
+    <div>
+      <h2>props:{{snum1}}</h2>
+      <h2>data:{{dsnum1}}</h2>
+      <!-- <input type="text" v-model="dsnum1"> -->
+      <input type="text" :value="dsnum1" @input="num1Input">
+      <h2>props:{{snum2}}</h2>
+      <h2>data:{{dsnum2}}</h2>
+      <!-- <input type="text" v-model="dsnum2"> -->
+      <input type="text" :value="dsnum2" @input="num2Input">
+    </div>
+  </template>
+  <script src='https://cdn.jsdelivr.net/npm/vue'></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      components: {
+        son: {
+          template: '#son',
+          props: {
+            snum1: [Number, String],
+            snum2: [Number, String]
+          },
+          data() {
+            return {
+              dsnum1: this.snum1,
+              dsnum2: this.snum2,
+            }
+          },
+          methods: {
+            num1Input(event) {
+              this.dsnum1 = event.target.value
+              this.$emit('num1change', this.dsnum1)
+              this.dsnum2 = this.dsnum1 * 100
+              this.$emit('num2change', this.dsnum2)
+            },
+            num2Input(event) {
+              this.dsnum2 = event.target.value
+              this.$emit('num2change', this.dsnum2)
+              this.dsnum1 = this.dsnum2 / 100
+              this.$emit('num1change', this.dsnum1)
+            }
+          },
+        }
+      },
+      data: {
+        num1: 0,
+        num2: 1
+      },
+      methods: {
+        num1change(value) {
+          console.log(value);
+          this.num1 = value
+        },
+        num2change(value) {
+          this.num2 = value
+        },
+      },
+    })
+  </script>
+</body>
+
+</html>
