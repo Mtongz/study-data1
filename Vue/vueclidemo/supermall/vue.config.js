@@ -1,6 +1,7 @@
 module.exports = {
-  configureWebpack = {
+  configureWebpack: {
     resolve: {
+      extensions: ['.js', '.vue', '.json'],
       alias: {
         'assets': '@/assets',
         'common': '@/common',
