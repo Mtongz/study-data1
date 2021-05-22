@@ -45,11 +45,12 @@ export default {
 	flex: 1;
 	height: 49px;
 	text-align: center;
-	font-size: 14px;
+	font-size: 12px;
 }
 .tab-bar-item img {
 	width: 24px;
 	height: 24px;
 	vertical-align: middle;
+	margin: 4px 0;
 }
 </style>
