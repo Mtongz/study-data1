@@ -33,8 +33,6 @@ export default {
 	methods: {
 		tabbarHandleClick() {
 			this.$router.push(this.path);
-			console.log(this.$route.path);
-			console.log(this.path);
 		},
 	},
 	mounted() {},

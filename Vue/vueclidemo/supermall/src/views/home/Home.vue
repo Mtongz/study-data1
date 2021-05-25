@@ -3,6 +3,13 @@
     <nav-bar class="home-nav">
       <div slot="center">购物街</div>
     </nav-bar>
+    <tab-control
+      class="tab-control"
+      :titles="['流行', '新款', '精选']"
+      @tabClick="tabClick"
+      ref="tabControl2"
+      v-show="isFixed"
+    ></tab-control>
     <bscroll
       class="home-content"
       ref="scroll"
@@ -18,6 +25,7 @@
         class="tab-control"
         :titles="['流行', '新款', '精选']"
         @tabClick="tabClick"
+        ref="tabControl1"
       ></tab-control>
       <goods-list :goods="showGoods"></goods-list>
     </bscroll>
@@ -60,8 +68,18 @@ export default {
         sell: { page: 0, list: [] }
       },
       currentType: "pop",
-      isTopShow: false
+      isTopShow: false,
+      isFixed: false,
+      tabOffsetTop: 0,
+      scrollY: 0
     };
+  },
+
+  activated() {
+    this.$refs.scroll.scrollBack(0, this.scrollY, 0);
+  },
+  deactivated() {
+    this.scrollY = this.$refs.scroll.getScrollY();
   },
   created() {
     this.getListData();
@@ -69,6 +87,7 @@ export default {
     this.getGoods("new", 1);
     this.getGoods("sell", 1);
   },
+
   computed: {
     showGoods() {
       return this.goods[this.currentType].list;
@@ -90,28 +109,30 @@ export default {
           this.currentType = "sell";
           break;
       }
+      this.$refs.tabControl1.currentIndex = index;
+      this.$refs.tabControl2.currentIndex = index;
     },
     backTopClick() {
       this.$refs.scroll.scrollBack(0, 0);
     },
     scrollPosition(position) {
+      // 监听滚动  是否显示返回顶部
       this.isTopShow = position.y < -1000;
+      // 监听滚动距离，是否显示tab栏
+      this.isFixed = position.y < -this.$refs.tabControl1.$el.offsetTop;
     },
     loadMore() {
-      console.log('加载更多');
-      this.getGoods(this.currentType)
-      
+      console.log("加载更多");
+      this.getGoods(this.currentType);
     },
     /*
      * 网络请求相关
      */
     getListData() {
       getHomeMultidata().then(res => {
-        console.log(res.data);
         const resData = res.data;
         this.banners = resData.banner.list;
         this.recommends = resData.recommend.list;
-        console.log(this.recommends);
       });
     },
     getGoods(type) {
@@ -120,7 +141,7 @@ export default {
         this.goods[type].list.push(...res.data.list);
         this.goods[type].page += 1;
 
-        this.$refs.scroll.finishPullUp()
+        this.$refs.scroll.finishPullUp();
       });
     }
   },
@@ -133,10 +154,10 @@ export default {
   position: relative;
 }
 .home-nav {
-  position: fixed;
+  /* position: fixed;
   left: 0;
   right: 0;
-  top: 0;
+  top: 0; */
 
   z-index: 1;
   background: var(--color-tint);
@@ -152,7 +173,9 @@ export default {
   right: 0;
 }
 .tab-control {
-  position: sticky;
-  top: 44px;
+  /* position: sticky;
+  top: 44px; */
+  position: relative;
+  z-index: 1;
 }
 </style>

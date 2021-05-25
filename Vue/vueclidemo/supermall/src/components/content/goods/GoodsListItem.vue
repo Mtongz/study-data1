@@ -1,8 +1,8 @@
 <template>
   <div class="goods-item">
-    <a :href="goodsItem.link" class="item-link">
-      <img class="item-img" :src="goodsItem.show.img" alt="" />
-    </a>
+    <div class="item-link" @click="goDetail">
+      <img class="item-img" :src="goodsItem.show.img" />
+    </div>
     <div class="item-info">
       <p :title="goodsItem.title">{{ goodsItem.title }}</p>
       <div class="item-txt">
@@ -33,7 +33,11 @@ export default {
       return "￥" + price;
     }
   },
-  methods: {},
+  methods: {
+    goDetail() {
+      this.$router.push('/detail/'+ this.goodsItem.iid)
+    }
+  },
   mounted() {}
 };
 </script>

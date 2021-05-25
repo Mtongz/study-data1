@@ -27,7 +27,6 @@ export default {
     return {};
   },
   created() {
-    console.log(this.goods);
   },
   methods: {},
   mounted() {}

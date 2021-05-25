@@ -9,6 +9,7 @@
 <script>
 import BScroll from "better-scroll";
 export default {
+  name: 'Bscroll',
   components: {},
   props: {
     probeType: {
@@ -32,25 +33,34 @@ export default {
       pullUpLoad: this.pullUpLoad,
       observeDOM: true,
       observeImage: true,
+      scrollY: true,
+      scrollbar: true,
       mouseWheel: {
         speed: 20,
         invert: false,
         easeTime: 300
       }
     });
-    this.bscroll.on("scroll", position => {
-      this.$emit("scroll", position);
-    });
-    this.bscroll.on("pullingUp", () => {
-      this.$emit("pullingUp");
-    });
+    if (this.probeType === 2 || this.probeType === 3) {
+      this.bscroll.on("scroll", position => {
+        this.$emit("scroll", position);
+      });
+    }
+    if (this.pullUpLoad) {
+      this.bscroll.on("pullingUp", () => {
+        this.$emit("pullingUp");
+      });
+    }
   },
   methods: {
     scrollBack(x, y, time = 300) {
-      this.bscroll.scrollTo(x, y, time);
+      this.bscroll && this.bscroll.scrollTo(x, y, time);
     },
-    finishPullUp(){
-      this.bscroll.finishPullUp()
+    finishPullUp() {
+      this.bscroll && this.bscroll.finishPullUp();
+    },
+    getScrollY() {
+      return this.bscroll ? this.bscroll.y : 0;
     }
   }
 };
