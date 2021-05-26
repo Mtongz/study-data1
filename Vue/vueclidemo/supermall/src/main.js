@@ -4,6 +4,12 @@ import router from './router'
 import store from './store'
 
 
+
+
+import utils from 'common/utils'
+Vue.prototype.$utils = utils;
+console.log(Vue);
+
 Vue.config.productionTip = false
 
 new Vue({

@@ -1,35 +1,35 @@
 <template>
-  <div class="detail-info" v-if="Object.keys(detailInfo).length !== 0">
-    <div class="detail-title">{{ detailInfo.title }}</div>
+  <div class="detail-info" v-if="Object.keys(detailInfos).length !== 0">
+    <div class="detail-title">{{ detailInfos.title }}</div>
     <div class="detail-price">
-      <span class="lowNowPrice">￥{{ detailInfo.lowNowPrice }}</span>
-      <span class="oldPrice">{{ detailInfo.oldPrice }}</span>
+      <span class="lowNowPrice">￥{{ detailInfos.lowNowPrice }}</span>
+      <span class="oldPrice">{{ detailInfos.oldPrice }}</span>
       <span
         class="discountDesc"
-        :style="{ backgroundColor: detailInfo.discountBgColor }"
-        v-if="detailInfo.discountDesc"
-        >{{ detailInfo.discountDesc }}</span
+        :style="{ backgroundColor: detailInfos.discountBgColor }"
+        v-if="detailInfos.discountDesc"
+        >{{ detailInfos.discountDesc }}</span
       >
     </div>
     <div class="detail-extra">
-      <span>{{ detailInfo.columns[0] }}</span>
-      <span>{{ detailInfo.columns[1] }}</span>
+      <span>{{ detailInfos.columns[0] }}</span>
+      <span>{{ detailInfos.columns[1] }}</span>
       <span>{{
-        detailInfo.services[detailInfo.services.length - 1].name
+        detailInfos.services[detailInfos.services.length - 1].name
       }}</span>
     </div>
     <div class="detail-service">
       <span
         class="service-item"
-        v-for="index in detailInfo.services.length - 1"
+        v-for="index in detailInfos.services.length - 1"
         :key="index"
       >
         <img
           class="service-icon"
-          :src="detailInfo.services[index - 1].icon"
-          v-if="detailInfo.services[index - 1].icon"
+          :src="detailInfos.services[index - 1].icon"
+          v-if="detailInfos.services[index - 1].icon"
         />
-        <span>{{ detailInfo.services[index - 1].name }}</span>
+        <span>{{ detailInfos.services[index - 1].name }}</span>
       </span>
     </div>
   </div>
@@ -39,7 +39,7 @@
 export default {
   components: {},
   props: {
-    detailInfo: {
+    detailInfos: {
       type: Object,
       default() {
         return {};
@@ -61,7 +61,7 @@ export default {
   border-bottom: 4px solid #eee;
 }
 .detail-title {
-  font-size: 20px;
+  font-size: 18px;
   overflow: hidden;
   text-overflow: ellipsis;
   /* 弹性伸缩盒子模型显示 */

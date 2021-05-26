@@ -33,7 +33,9 @@
       </div>
     </div>
     <div class="shop-btn">
-      <button>进店逛逛</button>
+      <a :href="shopInfoData.shopUrl">
+        <button>进店逛逛</button>
+      </a>
     </div>
   </div>
 </template>
@@ -132,10 +134,13 @@ export default {
 }
 .shop-btn {
   text-align: center;
-  button{
-    border: none;
-    padding: 10px 30px;
-    border-radius: 10px;
+  a {
+    display: inline-block;
+    button {
+      border: none;
+      padding: 10px 30px;
+      border-radius: 10px;
+    }
   }
 }
 </style>

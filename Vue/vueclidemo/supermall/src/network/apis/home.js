@@ -18,6 +18,13 @@ export function getHomeGoods(type, page) {
   })
 }
 
+
+
+
+
+
+
+
 export function detailData(iid) {
   return coderwhy({
     url: '/detail',
@@ -27,7 +34,7 @@ export function detailData(iid) {
   })
 }
 export class DetailInfos {
-  constructor(itemInfo,columns,services) {
+  constructor(itemInfo, columns, services) {
     this.title = itemInfo.title
     this.newPrice = itemInfo.price
     this.oldPrice = itemInfo.oldPrice
@@ -38,7 +45,7 @@ export class DetailInfos {
     this.services = services
   }
 }
-export class ShopInfo{
+export class ShopInfo {
   constructor(shopInfo) {
     this.avatar = shopInfo.shopLogo
     this.nickName = shopInfo.name
@@ -46,5 +53,12 @@ export class ShopInfo{
     this.goods = shopInfo.cGoods
     this.allGoodsUrl = shopInfo.allGoodsUrl
     this.score = shopInfo.score
+    this.shopUrl = shopInfo.shopUrl
+  }
+}
+export class shopGoodsParams {
+  constructor(info, size) {
+    this.info = info
+    this.size = size
   }
 }

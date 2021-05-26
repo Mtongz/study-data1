@@ -77,9 +77,11 @@ export default {
 
   activated() {
     this.$refs.scroll.scrollBack(0, this.scrollY, 0);
+    this.$refs.scroll.refresh()
   },
   deactivated() {
     this.scrollY = this.$refs.scroll.getScrollY();
+    console.log(this.scrollY);
   },
   created() {
     this.getListData();
