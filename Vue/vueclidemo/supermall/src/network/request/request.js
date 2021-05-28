@@ -18,7 +18,20 @@ export function coderwhy(config) {
     const _data = res.data
     return _data
   }, err => {
-
+    console.log(err);
+    if (err && err.response) {
+      console.log(err.response.status);
+      switch (err.response.status) {
+        case 400:
+          err.message = '请求错误'
+          break
+        case 401:
+          err.message = '未授权的访问'
+          break
+      }
+      console.log(err.message);
+    }
+    return err
   })
 
 

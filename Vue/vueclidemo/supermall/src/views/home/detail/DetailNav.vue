@@ -9,6 +9,7 @@
           class="title-item"
           v-for="(item, index) in title"
           :class="{ active: currentIndex === index }"
+          @click="handleClick(index)"
         >
           {{ item }}
         </div>
@@ -32,6 +33,10 @@ export default {
   methods: {
     goBack() {
       this.$router.back();
+    },
+    handleClick(index){
+      this.currentIndex = index
+      this.$emit('navIndex',index)
     }
   },
   mounted() {}
@@ -50,5 +55,8 @@ export default {
 }
 .title-item {
   flex: 1;
+}
+.active {
+  color: var(--color-high-text);
 }
 </style>

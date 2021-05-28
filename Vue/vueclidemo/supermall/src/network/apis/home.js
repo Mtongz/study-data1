@@ -2,6 +2,7 @@ import {
   coderwhy
 } from 'network/request/request'
 
+// home 相关
 export function getHomeMultidata() {
   return coderwhy({
     url: '/home/multidata'
@@ -18,19 +19,18 @@ export function getHomeGoods(type, page) {
   })
 }
 
-
-
-
-
-
-
-
+// detail  详情页相关
 export function detailData(iid) {
   return coderwhy({
     url: '/detail',
     params: {
       iid
     }
+  })
+}
+export function recommendData() {
+  return coderwhy({
+    url: '/recommend'
   })
 }
 export class DetailInfos {

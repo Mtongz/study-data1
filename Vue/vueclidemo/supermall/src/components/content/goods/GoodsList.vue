@@ -14,7 +14,7 @@ export default {
   name: "GoodsList",
   props: {
     goods: {
-      type: Array,
+      type: [Object,Array],
       default() {
         return [];
       }
@@ -26,14 +26,13 @@ export default {
   data() {
     return {};
   },
-  created() {
-  },
+  created() {},
   methods: {},
   mounted() {}
 };
 </script>
 <style>
-.goods{
+.goods {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;

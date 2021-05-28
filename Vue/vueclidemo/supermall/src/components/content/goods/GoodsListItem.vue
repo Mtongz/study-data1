@@ -1,7 +1,7 @@
 <template>
   <div class="goods-item">
     <div class="item-link" @click="goDetail">
-      <img class="item-img" :src="goodsItem.show.img" />
+      <img class="item-img" :src="getImages" @load="imgLoad" />
     </div>
     <div class="item-info">
       <p :title="goodsItem.title">{{ goodsItem.title }}</p>
@@ -28,14 +28,25 @@ export default {
   data() {
     return {};
   },
+  computed: {
+    getImages() {
+      return (
+        this.goodsItem.image || this.goodsItem.img || this.goodsItem.show.img
+      );
+    }
+  },
   filters: {
     rmb(price) {
       return "￥" + price;
     }
   },
   methods: {
+    imgLoad() {
+      this.$bus.$emit('imgLoad')
+    },
     goDetail() {
-      this.$router.push('/detail/'+ this.goodsItem.iid)
+      const iid = this.goodsItem.iid || this.goodsItem.item_id;
+      this.$router.push("/detail/" + iid);
     }
   },
   mounted() {}
@@ -66,6 +77,7 @@ export default {
     .item-txt {
       display: flex;
       justify-content: space-between;
+      padding: 0 2px;
       .price {
         color: var(--color-high-text);
       }

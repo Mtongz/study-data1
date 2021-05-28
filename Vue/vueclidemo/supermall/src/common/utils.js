@@ -1,4 +1,4 @@
-// 时间格式化函数、
+// 时间格式化函数
 function formatDate(date, fmt='yyyy-MM-dd') {
   if (/(y+)/.test(fmt)) {
     fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length));
@@ -23,7 +23,20 @@ function padLeftZero (str) {
   return ('00' + str).substr(str.length);
 };
 
+//频繁刷新的防抖函数
+function debounce(func, delay) {
+  let timer = null;
+  return function (...args) {
+    //...args可以传多个参数
+    clearTimeout(timer); //先清空定时器
+    timer = setTimeout(() => {
+      func.apply(this, args);
+    }, delay);
+  };
+}
+
 export default {
   formatDate,
-  padLeftZero
+  padLeftZero,
+  debounce
 }

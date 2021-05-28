@@ -14,7 +14,7 @@ export default {
   mounted() {}
 };
 </script>
-<style scope>
+<style scoped>
   .back-top{
     position: fixed;
     bottom: 44px;

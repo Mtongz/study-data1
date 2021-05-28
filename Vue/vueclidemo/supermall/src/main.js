@@ -8,8 +8,9 @@ import store from './store'
 
 import utils from 'common/utils'
 Vue.prototype.$utils = utils;
-console.log(Vue);
 
+
+Vue.prototype.$bus = new Vue();//添加事件总线对象
 Vue.config.productionTip = false
 
 new Vue({

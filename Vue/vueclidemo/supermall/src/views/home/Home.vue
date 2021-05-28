@@ -77,7 +77,7 @@ export default {
 
   activated() {
     this.$refs.scroll.scrollBack(0, this.scrollY, 0);
-    this.$refs.scroll.refresh()
+    this.$refs.scroll.refresh();
   },
   deactivated() {
     this.scrollY = this.$refs.scroll.getScrollY();
@@ -95,6 +95,9 @@ export default {
       return this.goods[this.currentType].list;
     }
   },
+  // mounted() {
+  //   this.tabClick(0);
+  // },
   methods: {
     /**
      * 监听事件相关
@@ -156,10 +159,10 @@ export default {
   position: relative;
 }
 .home-nav {
-  /* position: fixed;
+  position: fixed;
   left: 0;
   right: 0;
-  top: 0; */
+  top: 0;
 
   z-index: 1;
   background: var(--color-tint);

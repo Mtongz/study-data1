@@ -1,5 +1,5 @@
 <template>
-  <div class="detail-comment">
+  <div class="detail-comment" v-if="Object.keys(detailComment).length !== 0">
     <div class="comment-header">
       <span>用户评价({{ detailComment.cRate }})</span>
       <span>更多</span>
@@ -11,9 +11,12 @@
       </div>
       <div class="comment-content">
         <p>{{ item.content }}</p>
-        <div>
-          <span>{{ item.created | formatedate(item.created,that)}}</span>
+        <div class="content-info">
+          <span>{{ item.created | formatedate(that) }}</span>
           <span>{{ item.style }}</span>
+        </div>
+        <div class="content-img" v-if="item.images">
+          <img v-for="img in item.images" :src="img" alt="">
         </div>
       </div>
     </div>
@@ -37,13 +40,10 @@ export default {
       that: this
     };
   },
-  beforeCreate() {
-    this.that = this
-  },
   filters: {
-    formatedate(val,that) {
-      console.log(that.$utils);
-      return that.$utils.formatDate(val)
+    formatedate(val, that) {
+      const time = new Date(val * 1000);
+      return that.$utils.formatDate(time);
     }
   },
   methods: {},
@@ -78,6 +78,21 @@ export default {
   padding: 10px;
   p {
     color: #333;
+  }
+  .content-info {
+    margin: 10px 0;
+    span {
+      margin-right: 10px;
+    }
+  }
+  .content-img{
+    display: flex;
+    width: 100px;
+    height: 100px;
+    img{
+      width: 100%;
+      margin-right: 5px;
+    }
   }
 }
 </style>
