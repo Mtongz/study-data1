@@ -68,4 +68,8 @@ export default {
   }
 };
 </script>
-<style scoped></style>
+<style scoped>
+/* .bscroll-content{
+  height: 100vh;
+} */
+</style>

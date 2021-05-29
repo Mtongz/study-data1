@@ -191,11 +191,12 @@ export default {
       console.log(this.detailDatas.itemInfo);
       product.id = this.detailDatas.itemInfo.iid;
       product.price = this.detailDatas.itemInfo.lowNowPrice;
-      product.image = this.detailDatas.itemInfo.imUrl;
+      product.image = this.detailDatas.itemInfo.topImages[0];
       product.count = this.detailDatas.itemInfo.cartNum;
       product.title = this.detailDatas.itemInfo.title;
+      product.desc = this.detailDatas.itemInfo.desc;
 
-      this.$store.commit("changeCartList", product);
+      this.$store.dispatch("changeCartList", product);
     }
   },
   mounted() {}
@@ -203,22 +204,33 @@ export default {
 </script>
 <style scoped>
 .layout {
-  position: relative;
   z-index: 1;
   background-color: #fff;
 }
 #detail {
+  position: relative;
   height: 100vh;
 }
 .detail-nav {
+  position: relative;
 }
 .detail-scroll {
-  height: calc(100% - 93px);
-  /* position: absolute;
+  /* height: calc(100% - 93px); */
+  position: absolute;
   top: 44px;
-  bottom: 60px; */
+  left: 0;
+  right: 0;
+  bottom: 49px;
 }
 .detail-tabbar {
+  position: absolute;
   display: flex;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  font-size: 14px;
+  height: 49px;
+  background: #fff;
+  box-shadow: 0 1px 5px rgba(100, 100, 100, 0.2);
 }
 </style>
