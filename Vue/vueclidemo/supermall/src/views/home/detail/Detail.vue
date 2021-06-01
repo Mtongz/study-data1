@@ -12,9 +12,6 @@
       :probe-type="3"
       @scroll="navScroll"
     >
-      <ul>
-        <li v-for="item in $store.state.cartList">{{ item }}</li>
-      </ul>
       <detail-swiper :swiper-img="swiperImg"></detail-swiper>
       <detail-desc :detail-infos="detailInfos"></detail-desc>
       <detail-shop :shop-info-data="shopInfoData"></detail-shop>
@@ -54,6 +51,7 @@ import {
   shopGoodsParams
 } from "network/apis/home";
 
+import { mapActions } from "vuex";
 export default {
   name: "Detail",
   components: {
@@ -103,7 +101,9 @@ export default {
     // 很奇怪  要这里调用才能实现该功能
     this.getTitleOffsetTop();
   },
+  computed: {},
   methods: {
+    ...mapActions(["changeCartList"]),
     getDetailData(id) {
       detailData(id).then(res => {
         const detailData = res.result;
@@ -196,7 +196,12 @@ export default {
       product.title = this.detailDatas.itemInfo.title;
       product.desc = this.detailDatas.itemInfo.desc;
 
-      this.$store.dispatch("changeCartList", product);
+      // this.$store.dispatch("changeCartList", product).then(res => {
+      //   console.log(res);
+      // })
+      this.changeCartList(product).then(res => {
+        this.$toast.show(res);
+      });
     }
   },
   mounted() {}

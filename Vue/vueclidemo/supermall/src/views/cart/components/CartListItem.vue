@@ -11,7 +11,11 @@
       <div class="item-desc">{{ cartItem.desc }}</div>
       <div class="item-bottom">
         <div class="item-price">￥{{ cartItem.price }}</div>
-        <div class="item-count">{{ cartItem.count }}</div>
+        <div class="item-count">
+          div
+          <div>{{ cartItem.count }}</div>
+
+        </div>
       </div>
     </div>
   </div>
@@ -39,6 +43,8 @@ export default {
   methods: {
     checkChange(){
       this.cartItem.checked = !this.cartItem.checked
+      console.log(this.cartItem.checked);
+      console.log(this.$store.state.cartList);
     }
   },
   mounted() {}
@@ -90,8 +96,6 @@ export default {
     justify-content: space-between;
     .item-price {
       color: #f29d77;
-    }
-    .item-count {
     }
   }
 }

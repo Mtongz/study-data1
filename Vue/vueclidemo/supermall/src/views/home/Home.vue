@@ -4,7 +4,7 @@
       <div slot="center">购物街</div>
     </nav-bar>
     <tab-control
-      class="tab-control"
+      class="tab-control-fixed"
       :titles="['流行', '新款', '精选']"
       @tabClick="tabClick"
       ref="tabControl2"
@@ -153,10 +153,16 @@ export default {
   mounted() {}
 };
 </script>
-<style scoped>
+<style scoped lang="scss">
 .home {
   height: 100vh;
   position: relative;
+  .tab-control-fixed{
+    position: absolute;
+    top: 44px;
+    left: 0;
+    right: 0;
+  }
 }
 .home-nav {
   position: fixed;

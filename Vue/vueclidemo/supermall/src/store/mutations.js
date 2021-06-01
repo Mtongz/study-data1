@@ -4,7 +4,7 @@ export default {
   },
   cartGoodsAdd(state, product) {
     product.count = 1
-    product.checked = true
+    product.checked = false
     state.cartList.push(product)
   }
 }

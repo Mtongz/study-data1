@@ -1,19 +1,27 @@
 <template>
   <div class="payment-Bar">
     <div class="payment-check">
-      <input type="checkbox" id="allChecked" />
+      <input
+        type="checkbox"
+        id="allChecked"
+        :checked="isSelectAll"
+        @click="ckeckClick"
+      />
       <label for="allChecked">全选</label>
     </div>
     <div class="payment-content">
-      <span>合计:￥{{totalPrice}}</span>
+      <span>合计:￥{{ totalPrice }}</span>
     </div>
     <div class="payment-btn">
-      <div class="btn-text">去结算({{}})</div>
+      <div class="btn-text" @click="getAccount">
+        去结算({{ checkedLength }})
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "PaymentBar",
   components: {},
@@ -21,11 +29,40 @@ export default {
     return {};
   },
   computed: {
-    totalPrice(){
-
+    ...mapGetters(["cartList"]),
+    totalPrice() {
+      return this.cartList
+        .filter(item => item.checked)
+        .reduce((pre, item) => {
+          return pre + item.price * item.count;
+        }, 0)
+        .toFixed(2);
+    },
+    checkedLength() {
+      return this.cartList.filter(item => item.checked).length;
+    },
+    isSelectAll() {
+      return (
+        this.cartList.length !== 0 && this.cartList.every(item => item.checked)
+      );
     }
   },
-  methods: {},
+  methods: {
+    ckeckClick() {
+      if (this.isSelectAll) {
+        //全部选中
+        this.cartList.forEach(item => (item.checked = false));
+      } else {
+        //部分或全部不选中
+        this.cartList.forEach(item => (item.checked = true));
+      }
+    },
+    getAccount() {
+      if (!this.isSelectAll) {
+        this.$toast.show('请选择要结算的物品', 1500)
+      }
+    }
+  },
   mounted() {}
 };
 </script>
@@ -44,7 +81,7 @@ export default {
   font-size: 15px;
   display: flex;
   align-items: center;
-  #allChecked{
+  #allChecked {
     margin: 0 5px;
   }
 }
