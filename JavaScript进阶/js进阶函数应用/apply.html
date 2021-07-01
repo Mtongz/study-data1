@@ -1,0 +1,35 @@
+<!--
+ * @Description: apply改变函数内this指向
+ * @Autor: Tong
+ * @Date: 2021-07-01 14:20:47
+ * @LastEditors: Tong
+ * @LastEditTime: 2021-07-01 14:38:18
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // apply 传参需是  参数数组
+    const numbers = [5, 6, 2, 3, 7];
+
+    const max = Math.max.apply(null, numbers);
+
+    console.log(max);
+    // expected output: 7
+
+    const min = Math.min.apply(null, numbers);
+
+    console.log(min);
+    // expected output: 2
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!--
+ * @Description: bind 实现this指向改变并且实现 “有一个按钮，点击之后就禁用，规定时间之后开启这个按钮”
+ * @Autor: Tong
+ * @Date: 2021-07-01 14:56:03
+ * @LastEditors: Tong
+ * @LastEditTime: 2021-07-01 15:24:44
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style lang="scss">
+    .line {
+      margin: 20px;
+      border-bottom: 1px solid #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <button>禁用3秒后开启</button>
+  <div class="line"></div>
+  <button>禁用</button>
+  <button>禁用</button>
+  <button>禁用</button>
+  <script>
+    let btn = document.querySelector('button')
+    btn.onclick = function () {
+      this.disabled = true
+
+      setTimeout(function () {
+        this.disabled = false
+      }.bind(this), 1000)
+      console.log(123);
+    }
+    let btns = document.querySelectorAll('button')
+    for (let i = 0; i < btns.length; i++) {
+      btns[i].onclick = function () {
+        this.disabled = true
+        console.log(123);
+        setTimeout(function () {
+          this.disabled = false
+        }.bind(this),1000)
+      }
+    }
+  </script>
+</body>
+
+</html>

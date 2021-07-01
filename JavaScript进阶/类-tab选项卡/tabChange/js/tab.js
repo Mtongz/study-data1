@@ -3,7 +3,7 @@
  * @Autor: Tong
  * @Date: 2021-06-26 09:45:44
  * @LastEditors: Tong
- * @LastEditTime: 2021-06-26 14:42:24
+ * @LastEditTime: 2021-06-29 13:21:15
  */
 let that;
 class Tab {
@@ -28,6 +28,7 @@ class Tab {
             this.lis[i].onclick = this.toggleTab
             this.remove[i].onclick = this.removeTab
             this.spans[i].ondblclick = this.editTab
+            this.sections[i].ondblclick = this.editTab
         }
         this.tabadd.onclick = this.addTab
     }
@@ -73,9 +74,6 @@ class Tab {
         index--
         that.lis[index] && that.lis[index].onclick()
     }
-    blur(ele) {
-        console.log(this);
-    }
     // 4.修改功能
     editTab() {
         let txt = this.innerHTML
@@ -86,10 +84,15 @@ class Tab {
         input.value = txt
         // 全选
         input.select()
-        input.onblur = this.blur
-        // function () {
-        //     this.parentNode.innerHTML = input.value
-        // }
+        input.onblur = function () {
+            this.parentNode.innerHTML = input.value
+        }
+        input.onkeyup = function (e) {
+            if(e.keyCode === 13) {
+                this.blur()
+            }
+        }
+
     }
 }
 new Tab('.tabsbox')
