@@ -1,0 +1,32 @@
+<!--
+ * @Description: 递归之阶乘
+ * @Autor: Tong
+ * @Date: 2021-07-02 11:09:40
+ * @LastEditors: Tong
+ * @LastEditTime: 2021-07-02 13:23:46
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function cj(n) {
+      // 2.
+      if (n == 1) {
+        return 1
+      }
+      // 1.原理： n * （n的前一个）
+      return n * cj(n - 1)
+    }
+    console.log(cj(5));
+  </script>
+</body>
+
+</html>

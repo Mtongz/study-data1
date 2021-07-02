@@ -1,0 +1,33 @@
+<!--
+ * @Description: 递归之斐波那契数列
+ * @Autor: Tong
+ * @Date: 2021-07-02 11:09:22
+ * @LastEditors: Tong
+ * @LastEditTime: 2021-07-02 13:22:29
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 斐波那契数列 1 1 2 3 5 8 13 21 34 55 89 144
+    function fib(params) {
+      // 1. fib(n - 1)  + fib(n - 2)
+      if( params == 1 || params == 2) {
+        return 1
+      }
+      return fib(params - 1)  + fib(params - 2)
+    }
+    console.log(fib(1));  //1
+    console.log(fib(2));  //1
+    console.log(fib(3));  //2
+    console.log(fib(4));  //3
+    console.log(fib(5));  //5
+  </script>
+</body>
+</html>

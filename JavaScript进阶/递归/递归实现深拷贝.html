@@ -1,0 +1,47 @@
+<!--
+ * @Description: 递归之深拷贝
+ * @Autor: Tong
+ * @Date: 2021-07-02 15:07:03
+ * @LastEditors: Tong
+ * @LastEditTime: 2021-07-02 15:41:18
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let obj = {
+      id: 1,
+      name: 'tong',
+      course: ['math', 'english', 'chinese'],
+      info: {
+        age: 18,
+        sex: 'men'
+      }
+    }
+
+    let o = {}
+    function deepCopy(newObj, oldObj) {
+      for (const key in oldObj) {
+        let item = oldObj[key]
+        if(item instanceof Array) {
+          newObj[key] = []
+          deepCopy(newObj[key], item)
+        } else if(item instanceof Object) {
+          newObj[key] = {}
+          deepCopy(newObj[key], item)
+        } else {
+          newObj[key] = item
+        }
+      }
+    }
+    deepCopy(o, obj)
+    console.log(o);
+  </script>
+</body>
+</html>
