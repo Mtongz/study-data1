@@ -1,0 +1,50 @@
+<!--
+ * @Description: 打滴案例
+ * @Autor: Tong
+ * @Date: 2021-07-02 09:47:15
+ * @LastEditors: Tong
+ * @LastEditTime: 2021-07-02 10:21:40
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 
+    3公里起步价 13  
+    超出每公里 5
+    拥堵之后拥堵费 10
+   -->
+  <script>
+    let car = (function () {
+      let start = 13
+      let total = 0
+      return {
+        price: function (n) {
+          if (n <= 3) {
+            total = start
+          } else {
+            total = (n - 3) * 5 + start
+          }
+          return total
+        },
+        jam: function (flag) {
+          return flag ? total + 10 : total
+        }
+      }
+    })()
+    console.log(car.price(5)); //23
+    console.log(car.jam(true)); //33
+
+    console.log(car.price(1)); //13
+    console.log(car.jam(false)); //13
+  </script>
+</body>
+
+</html>
