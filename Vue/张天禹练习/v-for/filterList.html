@@ -1,0 +1,84 @@
+<!--
+ * @Description: 搜索排序
+ * @Autor: Tong
+ * @Date: 2021-07-19 10:19:08
+ * @LastEditors: Tong
+ * @LastEditTime: 2021-07-23 11:04:29
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../../vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h2>人员列表</h2>
+    <input type="text" v-model="keyword" placeholder="请输入人员名称">
+    <input type="button" @click="sortType = 1" value="升序">
+    <input type="button" @click="sortType = 2" value="降序">
+    <input type="button" @click="sortType = 0" value="原顺序">
+    <ul>
+      <li v-for="(item, index) in formatList">{{index}}---{{item.name}}---{{item.age}}</li>
+    </ul>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          keyword: '',
+          sortType: 0,
+          list: [{
+              name: '马冬梅',
+              age: 28
+            },
+            {
+              name: '周冬雨',
+              age: 26
+            },
+            {
+              name: '周杰伦',
+              age: 28
+            },
+            {
+              name: '邓伦',
+              age: 28
+            },
+          ]
+        }
+      },
+      computed: {
+        formatList() {
+          const {list, keyword, sortType} = this
+          let arr =  list.filter(p => p.name.indexOf(keyword) !== -1)
+          if(sortType) {
+            arr.sort((a, b)=>{
+              if(sortType == 1) {
+                return a.age - b.age
+              } else {
+                return b.age - a.age
+              }
+            })
+          }
+          return arr
+        }
+      },
+      // 1.用watch监听，filter方法，过滤出list的name中含有输入值的项    在watch中修改原数据会导致元数据丢失
+      // watch: {
+      //   keyword(value) {
+      //     const arr = this.list.filter(p => p.name.indexOf(value) !== -1)
+      //     // this.list = arr   //这就是在watch中修改原数据会导致元数据丢失
+      //     console.log(arr);
+      //   }
+      // },
+    })
+  </script>
+</body>
+
+</html>

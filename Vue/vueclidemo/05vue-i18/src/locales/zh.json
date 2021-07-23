@@ -1,3 +1,5 @@
 {
-  "message": "你好 i18n !!"
+  "SAY": "你好 i18n !!",
+  "LANGE": "中文",
+  "CHANGE_LANG": "切换语言"
 }

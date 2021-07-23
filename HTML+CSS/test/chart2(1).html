@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>卡片效果</title>
+</head>
+<body style="background-color: gray">
+
+<div style="background:#fff;width: 90%;padding:16px 16px 0;margin:32px;">
+    <div style="margin-left: 30px;display: flex;text-align: center">
+        <div id="container1" style="width:100%;height: 300px"></div>
+        <div style="width:100%;height: 300px">
+            <span style="float: left;margin-left: 30px">孕妇建卡服务量</span>
+            <div id="container2" style="width:100%;height: 100%"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/extension/bmap.min.js"></script>
+
+<script type="text/javascript">
+    var dom = document.getElementById("container1");
+    var myChart = echarts.init(dom);
+
+    var myColor = ['#81E7ED'] //内柱状图颜色
+    var dataLine = [96, 100, 97, 100, 32, 100]
+    let positionLeft = 0.4,
+        max = 100 + 2*positionLeft
+    var option = {
+        grid: [
+            {
+                left: '8%',
+                top: '12%',
+                right: '5%',
+                bottom: '8%',
+                containLabel: true
+            },
+            {
+                left: '10%',
+                top: '12%',
+                right: '5%',
+                bottom: '8%',
+                containLabel: true
+            }
+        ],
+        xAxis: [{
+            max:max,
+            show: false
+        }],
+        yAxis: [{
+            axisTick: 'none',
+            axisLine: 'none',
+            offset: '27',
+            axisLabel: {
+                textStyle: {
+                    color: '#000000', //y轴字体颜色
+                    fontSize: '16'
+                }
+            },
+            data: ['民众满意度', '全员数据完整率', '3岁以下儿童系统管理率', '孕妇建卡数据归集率', '托育机构覆盖率', '助产机构覆盖率' ]
+        }, {
+            axisTick: 'none',
+            axisLine: 'none',
+            show: false,
+            axisLabel: {
+                textStyle: {
+                    color: '#ffffff',
+                    fontSize: '16'
+                }
+            },
+            data: [1, 1, 1, 1, 1, 1]
+        }, {
+
+            axisLine: {
+                lineStyle: {
+                    color: 'rgba(0,0,0,0)' //y轴线颜色
+                }
+            },
+            data: []
+        },
+            {  //设置柱状图右边参数
+                show: false,
+                inverse: true,
+                data: dataLine,
+                axisLine: {
+                    show: false
+                },
+                splitLine: {
+                    show: false
+                },
+                axisTick: {
+                    show: false
+                },
+            }],
+        series: [
+
+            {
+                name: '条',
+                type: 'bar',
+                stack: 'b',
+                yAxisIndex: 0,
+                data: dataLine,
+                label: {
+                    normal: {
+                        show: false,
+                        position: 'right',
+                        distance: 10,
+                        formatter: function(param) {
+                            return param.value + '%'
+                        },
+                        textStyle: {
+                            color: '#ffffff',
+                            fontSize: '16'
+                        }
+                    }
+                },
+                barWidth: 21,
+                itemStyle: {
+                    normal: {
+                        color: new echarts.graphic.LinearGradient(
+                            1, 0, 0, 0,
+                            [
+                                {offset: 0, color: '#024cd4'},
+                                {offset: 1, color: '#3da6d2'}
+                            ]
+                        ),
+
+                        barBorderRadius:[100, 100, 100, 100, 100, 100],
+                    }
+                },
+                z: 2
+            }, { //背景灰框
+                name: '白框',
+                type: 'bar',
+                yAxisIndex: 1,
+                barGap: '-100%',//设置-100% 则表示灰色柱状图与红色柱状图重合
+                data: [99.9, 99.9, 99.9, 99.9, 99.9, 99.9],
+                barWidth: 21,
+                itemStyle: {
+                    normal: {
+                        color: '#DDDDDD',
+                        barBorderRadius:[100, 100, 100, 100, 100, 100],
+                    },
+
+                },
+                z: 1  // 设置维度越高这表示覆盖低的
+            },
+            {
+                name: '外框',
+                type: 'bar',
+                yAxisIndex: 2,
+                barGap: '-100%',
+                data: [100, 100, 100, 100, 100, 100],
+                barWidth: 23,
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'right',
+                        distance: 10,
+                        color:'#000000',
+                        formatter: function(data) {
+                            return dataLine[data.dataIndex] +"%";
+                        },
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        color: '#DDDDDD',
+                        barBorderRadius:[100, 100, 100, 100, 100, 100],
+                    }
+                },
+
+                z: 0
+            }
+        ]
+    }
+    if (option && typeof option === 'object') {
+        myChart.setOption(option);
+    }
+
+
+
+    var dom = document.getElementById("container2");
+    var myChart = echarts.init(dom);
+    var app = {};
+
+    var option;
+
+
+
+    option = {
+        xAxis: {
+            type: 'category',
+            data: ['2021-01', '2021-02', '2021-03', '2021-04', '2021-05', '2021-06', '2021-07']
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [{
+            data: [900,800,1180,1190,1150,800,250],
+            type: 'line',
+            smooth: true
+        }]
+    };
+
+    if (option && typeof option === 'object') {
+        myChart.setOption(option);
+    }
+
+</script>
+</body>
+</html>

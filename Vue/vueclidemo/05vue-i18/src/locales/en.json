@@ -1,3 +1,5 @@
 {
-  "message": "hello i18n !!"
+  "SAY": "hello i18n !!",
+  "LANGE": "english",
+  "CHANGE_LANG": "change lang"
 }
