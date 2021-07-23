@@ -1,0 +1,26 @@
+<!--
+ * @Description: 
+ * @Autor: Tong
+ * @Date: 2021-07-08 13:47:51
+ * @LastEditors: Tong
+ * @LastEditTime: 2021-07-08 13:50:13
+-->
+<script>
+  /**
+   * @param {number[]} nums
+   * @param {number} target
+   * @return {number[]}
+   */
+  var twoSum = function (nums, target) {
+    for (let i = 0; i < nums.length - 1; i++) {
+      console.log('i=', i);
+      for (let a = i + 1; a < nums.length; a++) {
+        console.log('a=', a);
+        if (nums[i] + nums[a] === target) {
+          return [i, a]
+        }
+      }
+    }
+  };
+  twoSum([1, 2, 4], 6)
+</script>

@@ -1,0 +1,40 @@
+<!--
+ * @Description: 
+ * @Autor: Tong
+ * @Date: 2021-07-08 09:41:54
+ * @LastEditors: Tong
+ * @LastEditTime: 2021-07-08 15:54:11
+-->
+<script>
+  var ary = new Array("1111", "222", "2222", "111", "22");
+
+  // 验证重复元素，有重复返回true；否则返回false
+
+  function isRepeat(arr) {
+    var hash = {};
+    for (var i in arr) {
+      if (hash[arr[i]]) {
+        console.log('true');
+        return true
+      }
+      // 不存在该元素，则赋值为true，可以赋任意值，相应的修改if判断条件即可
+      hash[arr[i]] = true
+      console.log(hash);
+    }
+    console.log('false');
+    return false
+  }
+  isRepeat(ary)
+</script>
+
+<script>
+  var containsDuplicate = function (nums) {
+    nums.sort((a, b) => a - b)
+    for (i = 0; i < nums.length - 1; i++) {
+      if (nums[i] === nums[i + 1]) {
+        return true
+      }
+    }
+    return false
+  };
+</script>

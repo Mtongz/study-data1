@@ -1,0 +1,32 @@
+<!--
+ * @Description: 
+ * @Autor: Tong
+ * @Date: 2021-07-10 13:33:37
+ * @LastEditors: Tong
+ * @LastEditTime: 2021-07-10 14:44:00
+-->
+<script>
+  var removeElement = function (nums, val) {
+    let ans = 0;
+    for (const num of nums) {
+      if (num !== val) {
+        nums[ans] = num;
+        ans++;
+      }
+    }
+    return ans;
+  };
+  removeElement([1, 2, 3, 4, 5, 1, 1, 2], 1)
+</script>
+<script>
+  var removeElement = function (nums, val) {
+    let ans = 0;
+    nums.filter((item) => {
+      if (item !== val) {
+        nums[ans] = item
+        ans++
+      }
+    })
+    return ans;
+  };
+</script>

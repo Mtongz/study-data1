@@ -1,0 +1,23 @@
+<!--
+ * @Description: 
+ * @Autor: Tong
+ * @Date: 2021-07-08 14:02:33
+ * @LastEditors: Tong
+ * @LastEditTime: 2021-07-08 14:29:07
+-->
+<script>
+  var reverse = function (x) {
+
+    const symbol = String(x).split("").reverse().join("")
+    let result;
+    if (x >= 0) {
+      result = Number(symbol)
+    } else {
+      result = Number(symbol.slice(-1) + symbol.slice(0, -1))
+    }
+    if (result < (-2) ** 31 || result > (2 ** 31 - 1)) {
+      result = 0
+    }
+    return result
+  }
+</script>

@@ -1,0 +1,45 @@
+<!--
+ * @Description: 
+ * @Autor: Tong
+ * @Date: 2021-07-09 13:29:17
+ * @LastEditors: Tong
+ * @LastEditTime: 2021-07-09 14:02:13
+-->
+<script>
+  // 双指针
+  //   思路
+  // 用一个读指针，一个写指针遍历数组。
+  // 遇到重复的元素 读指针 就继续前移。
+  // 遇到不同的元素 写指针 就前移一步，写入那个元素。
+  var removeDuplicates = function (nums) {
+    let p1 = 0,
+      p2 = 0;
+
+    while (p2 < nums.length) {
+      if (nums[p1] != nums[p2]) {
+        p1++;
+        nums[p1] = nums[p2];
+      }
+      p2++;
+    }
+    return p1 + 1;
+  }
+</script>
+<script>
+  var removeDuplicates = function (nums) {
+    // let num = [...new Set(nums)]
+    // console.log(num)
+    // // console.log(nums.splice(0))
+    // num.forEach((el) => {
+    //   nums.push(el)
+    // })
+    // return nums.length
+    // console.log(nums)
+    let num = new Set(nums)
+    nums.splice(0)
+    num.forEach((el) => {
+      nums.push(el)
+    })
+    return nums.length
+  }
+</script>

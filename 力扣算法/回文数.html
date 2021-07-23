@@ -1,0 +1,44 @@
+<!--
+ * @Description: 
+ * @Autor: Tong
+ * @Date: 2021-07-09 10:29:05
+ * @LastEditors: Tong
+ * @LastEditTime: 2021-07-09 10:47:09
+-->
+<script>
+  function isPalindrome(x) {
+    if (x < 0) {
+      return false
+    } else {
+      let xs = x.toString().split('').reverse().join('')
+      return x === Number(xs)
+    }
+  }
+  isPalindrome(123321)
+</script>
+<script>
+  var isPalindrome = function (x) {
+    if (x < 0 || (!(x % 10) && x)) return false;
+    let xs = x,
+      res = 0;
+    while (xs) {
+      res = res * 10 + xs % 10;
+      xs = ~~(xs / 10);
+    }
+    return res === x;
+  }
+</script>
+<script>
+  var isPalindrome = function(x) {
+    if(x<0){
+         return false;
+    }else{
+        let str = '' + x;
+        if(str == Array.from(str).reverse().join('')){
+            return true;
+        }else{
+            return false;
+        }
+    }
+}
+</script>
