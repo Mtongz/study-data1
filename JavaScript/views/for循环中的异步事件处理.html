@@ -1,0 +1,76 @@
+<!--
+ * @Description: 
+ * @Autor: Tong
+ * @Date: 2021-07-24 10:15:35
+ * @LastEditors: Tong
+ * @LastEditTime: 2021-07-24 10:16:50
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //     今天恰好遇到使用async来解决这个问题的办法，顺便更新几个解决办法。
+    // 有代码如下：
+    for (var i = 0; i < 10; i++) {
+      setTimeout(function () {
+        console.log(i);
+      }, 1000);
+    }
+    // 可以猜到代码执行1s后，依次打印10个"10".
+    // 解决办法：
+
+    // 利用块级作用域(最简单，推荐)
+    for (let i = 0; i < 10; i++) {
+      setTimeout(function () {
+        console.log(i);
+      }, 1000);
+    }
+    // 依次打印0 - 9
+    // 利用自执行函数，将i作为参数传入
+    for (var i = 0; i < 10; i++) {
+      (function (i) {
+        setTimeout(function () {
+          console.log(i);
+        }, 1000);
+      })(i);
+    }
+    // 利用setTimeout的第三个参数，将i作为参数传入function
+    for (var i = 0; i < 10; i++) {
+      setTimeout(function (j) {
+        console.log(j);
+      }, 1000, i);
+    }
+    // 利用promise（使用promise的办法，是为了更好地理解promise）
+    for (var i = 0; i < 10; i++) {
+      new Promise((resolve, reject) => {
+        var j = i;
+        setTimeout(function () {
+          console.log(j)
+        }, 1000);
+      })
+    }
+    // 利用async函数（为了理解async函数）
+    async function foo() {
+      for (var i = 0; i < 10; i++) {
+        let result = await new Promise((resolve, reject) => {
+          setTimeout(function () {
+            resolve(i);
+          }, 1000);
+        });
+        console.log(result);
+      }
+    }
+    foo();
+    // 每隔1s打印数字 0 - 9
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!--
+ * @Description: 最简单的发布订阅
+ * @Autor: Tong
+ * @Date: 2021-08-05 10:15:12
+ * @LastEditors: Tong
+ * @LastEditTime: 2021-08-05 11:09:36
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let houseObj = {}
+    houseObj.list = []
+
+    // 添加订阅者
+    houseObj.listen = function (key, fn) {
+      // this.list.push(fn)
+      //// 
+    }
+
+    // 发布
+    houseObj.trigger = function () {
+      for(let i = 0, fn; fn = this.list[i++];) {
+        fn.apply(this, arguments)
+      }
+    }
+
+    houseObj.listen(function (size) {
+      
+    })
+  </script>
+</body>
+
+</html>

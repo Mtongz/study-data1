@@ -3,7 +3,7 @@
  * @Autor: Tong
  * @Date: 2021-07-19 10:19:08
  * @LastEditors: Tong
- * @LastEditTime: 2021-07-23 11:04:29
+ * @LastEditTime: 2021-07-23 11:15:30
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -59,7 +59,7 @@
           let arr =  list.filter(p => p.name.indexOf(keyword) !== -1)
           if(sortType) {
             arr.sort((a, b)=>{
-              if(sortType == 1) {
+              if(sortType === 1) {
                 return a.age - b.age
               } else {
                 return b.age - a.age

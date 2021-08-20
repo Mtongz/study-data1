@@ -1,0 +1,37 @@
+<!--
+ * @Description: 
+ * @Autor: Tong
+ * @Date: 2021-08-05 13:44:09
+ * @LastEditors: Tong
+ * @LastEditTime: 2021-08-05 14:23:44
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../../vue.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h2>{{time | dateFmt}}</h2>
+    <h2>{{time | dateFmt('YYYY-MM-DD d HH:mm:ss')}}</h2>
+  </div>
+  <script>
+    Vue.filter('dateFmt', function (value, def='YYYY-MM-DD') {
+      return moment(value).format(def)
+    })
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          time: Date.now()
+        }
+      },
+    })
+  </script>
+</body>
+</html>
