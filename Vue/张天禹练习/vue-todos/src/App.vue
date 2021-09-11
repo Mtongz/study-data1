@@ -3,7 +3,7 @@
  * @Autor: Tong
  * @Date: 2021-08-10 15:39:14
  * @LastEditors: Tong
- * @LastEditTime: 2021-08-18 17:05:03
+ * @LastEditTime: 2021-08-21 17:32:41
 -->
 <template>
   <div class="todo-container">
@@ -16,6 +16,25 @@
       />
       <Footer :todos="todos" @update-all="updateAll" @clear-all="clearAll" />
     </div>
+    <div class="slot-wrap">
+      <Card title="游戏">
+        <template slot="youxi">
+          <ul>
+            <li v-for="game in gameArr">{{ game.name }}---{{ game.price }}</li>
+          </ul>
+        </template>
+      </Card>
+      <Card title="美食" slot="meishi">
+        <template slot="meishi">
+          <img src="./assets/logo.png" alt="">
+        </template>
+      </Card>
+      <Card title="视频">
+        <template slot="radio">
+          <video :src="radioUrl" controls></video>
+        </template>
+      </Card>
+    </div>
   </div>
 </template>
 
@@ -23,9 +42,11 @@
 import Header from "./components/Header";
 import List from "./components/List";
 import Footer from "./components/Footer";
+
+import Card from "./components/Card";
 export default {
   name: "App",
-  components: { Header, List, Footer },
+  components: { Header, List, Footer, Card },
   data() {
     const localTodos = localStorage.getItem("todos");
     let todos;
@@ -37,7 +58,14 @@ export default {
       todos = [];
     }
     return {
-      todos
+      todos,
+      gameArr: [
+        { id: "001", name: "王者荣耀", price: 0 },
+        { id: "002", name: "绝地求生", price: 88 },
+        { id: "003", name: "使命召唤", price: 188 },
+        { id: "004", name: "穿越火线", price: 5888 }
+      ],
+      radioUrl: 'http://vfx.mtime.cn/Video/2019/02/04/mp4/190204084208765161.mp4'
     };
   },
   computed: {},
@@ -117,5 +145,18 @@ body {
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
+}
+/**Card */
+.slot-wrap {
+  display: flex;
+  justify-content: space-around;
+}
+/**Img */
+img {
+  width: 100%;
+}
+/**video */
+video {
+  width: 100%;
 }
 </style>
