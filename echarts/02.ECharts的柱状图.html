@@ -1,0 +1,67 @@
+<!--
+ * @Description: 
+ * @Autor: Tong
+ * @Date: 2021-09-29 11:29:54
+ * @LastEditors: Tong
+ * @LastEditTime: 2021-09-29 14:18:41
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./lib/echarts.min.js"></script>
+</head>
+
+<body>
+  <div style="width: 400px; height: 300px"></div>
+
+  <script>
+    let dom = document.querySelector('div')
+    let myEcharts = echarts.init(dom)
+    let option = {
+      xAxis: {
+        type: 'category',
+        data: ['张三', '李四', '王五', '闰土', '小明', '茅台', '二妞', '大强']
+      },
+      yAxis: {
+        type: 'value'
+      },
+      series: [{
+        name: '语文',
+        type: 'bar',
+        data: [85, 90, 65, 75, 92, 80, 70, 82],
+        markPoint: {
+          data: [{
+              type: 'max',
+              name: '最大值'
+            },
+            {
+              type: 'min',
+              name: '最小值'
+            }
+          ]
+        },
+        markLine: {
+          data: [{
+            type: 'average',
+            name: '平均值'
+          }]
+        },
+        label: {
+          show: true,
+          // distance: 100,
+          // rotate: 45,
+          color: '#ae86a5',
+          position: 'top'
+        }
+      }]
+    }
+    myEcharts.setOption(option)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,111 @@
+<!--
+ * @Description: 
+ * @Autor: Tong
+ * @Date: 2021-09-29 11:29:54
+ * @LastEditors: Tong
+ * @LastEditTime: 2021-09-29 16:08:12
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./lib/echarts.min.js"></script>
+</head>
+
+<body>
+  <div style="width: 1000px; height: 600px"></div>
+
+  <script>
+    let dom = document.querySelector('div')
+    let myEcharts = echarts.init(dom)
+    let option = {
+      // 1.通用配置title
+      title: {
+        text: '成绩展示', //标题内容
+        textStyle: { // 标题样式
+          color: 'red'
+        },
+        borderWidth: 1, //标题边框宽度
+        borderColor: '#ccc', //标题边框颜色
+        borderRadius: 3, //标题圆角
+        // top: 30,
+        // left: 'center'
+      },
+      // 2.通用配置tooltip 提示框组件
+      tooltip: {
+        trigger: 'axis', // 触发类型 参数  axis, item
+        triggerOn: 'click', // 触发时机 参数 click, mouseover(默认)
+        /**
+         * formatter有两种 一种是字符串模板，一种是函数 如下:
+         */
+        // formatter: '{b}的成绩是{c}'  
+        formatter: function (arg) {
+          return arg[0].name + '的成绩是：' + arg[0].data
+        }
+      },
+      //  3.通用配置toolbox 工具栏。内置有 -导出图片，-数据视图，-动态类型切换，-数据区域缩放，-重置 五个工具。
+      toolbox: {
+        feature: {
+          myTool1: {
+            show: true,
+            title: '自定义扩展方法1',
+            icon: 'path://M432.45,595.444c0,2.177-4.661,6.82-11.305,6.82c-6.475,0-11.306-4.567-11.306-6.82s4.852-6.812,11.306-6.812C427.841,588.632,432.452,593.191,432.45,595.444L432.45,595.444z M421.155,589.876c-3.009,0-5.448,2.495-5.448,5.572s2.439,5.572,5.448,5.572c3.01,0,5.449-2.495,5.449-5.572C426.604,592.371,424.165,589.876,421.155,589.876L421.155,589.876z M421.146,591.891c-1.916,0-3.47,1.589-3.47,3.549c0,1.959,1.554,3.548,3.47,3.548s3.469-1.589,3.469-3.548C424.614,593.479,423.062,591.891,421.146,591.891L421.146,591.891zM421.146,591.891',
+            onclick: function () {
+              alert('myToolHandler1')
+            }
+          },
+          saveAsImage: {},
+          dataView: {},
+          dataZoom: {},
+          magicType: {
+            type: ['line', 'bar']
+          },
+          restore: {}
+        }
+      },
+      xAxis: {
+        type: 'category',
+        data: ['张三', '李四', '王五', '闰土', '小明', '茅台', '二妞', '大强']
+      },
+      yAxis: {
+        type: 'value'
+      },
+      series: [{
+        name: '语文',
+        type: 'bar',
+        data: [85, 90, 65, 75, 92, 80, 70, 82],
+        markPoint: {
+          data: [{
+              type: 'max',
+              name: '最大值'
+            },
+            {
+              type: 'min',
+              name: '最小值'
+            }
+          ]
+        },
+        markLine: {
+          data: [{
+            type: 'average',
+            name: '平均值'
+          }]
+        },
+        label: {
+          show: true,
+          // distance: 100,
+          // rotate: 45,
+          color: '#ae86a5',
+          position: 'inside'
+        }
+      }]
+    }
+    myEcharts.setOption(option)
+  </script>
+</body>
+
+</html>

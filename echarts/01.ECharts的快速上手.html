@@ -1,0 +1,80 @@
+<!--
+ * @Description: ECharts的简单案例(柱状图)
+ * @Autor: Tong
+ * @Date: 2021-09-29 10:53:30
+ * @LastEditors: Tong
+ * @LastEditTime: 2021-09-29 14:12:33
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- 步骤1、 引入ECharts.js文件 -->
+  <script src="./lib/echarts.min.js"></script>
+</head>
+
+<body>
+  <!-- 
+    步骤1、 引入ECharts.js文件
+    步骤2、 准备一个呈现图表的盒子
+    步骤3、 初始化echarts实例对象
+    步骤4、 准备配置项
+    步骤5、 将配置项设置给echarts实例对象
+  -->
+  <!-- 步骤2、 准备一个呈现图表的盒子 -->
+  <div style="width: 500px; height: 300px;"></div>
+  <script>
+    let dom = document.querySelector('div')
+    let myECharts = echarts.init(dom)
+
+    let option = {
+      title: {
+        text: '学生成绩',
+        textStyle: {
+          color: 'red'
+        }
+      },
+      xAxis: {
+        type: 'category',
+        data: ['m', 'mm', 'mmm']
+      },
+      yAxis: {
+        type: 'value'
+      },
+      series: [{
+          name: '数学',
+          type: 'bar',
+          data: [90, 100, 110],
+          markPoint: {
+            data: [{
+                type: 'max',
+                name: '最大值'
+              },
+              {
+                type: 'min',
+                name: '最小值'
+              }
+            ]
+          },
+          markLine: {
+            data: [{
+              type: 'average',
+              name: '平均值'
+            }]
+          },
+          label: {
+            show: true
+          }
+        },
+
+      ]
+    }
+    myECharts.setOption(option)
+  </script>
+</body>
+
+</html>

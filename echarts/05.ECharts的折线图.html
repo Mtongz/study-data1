@@ -1,0 +1,103 @@
+<!--
+ * @Description: 折线图，常用来分析数据随时间的变化趋势
+ * @Autor: Tong
+ * @Date: 2021-09-29 11:29:54
+ * @LastEditors: Tong
+ * @LastEditTime: 2021-09-30 09:44:12
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./lib/echarts.min.js"></script>
+</head>
+
+<body>
+  <div style="width: 1000px; height: 600px"></div>
+
+  <script>
+    let dom = document.querySelector('div')
+    let myECharts = echarts.init(dom)
+    let month = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+    let salesA = [3000, 2800, 900, 1000, 800, 700, 1400, 1300, 900, 1000, 800, 600]
+    let salesB = [2000, 1800, 400, 1500, 400, 1500, 1200, 1300, 500, 1100, 1200, 400]
+    let option = {
+      title: {
+        text: '2020年康师傅方便面月销量'
+      },
+      xAxis: {
+        type: 'category',
+        data: month,
+        boundaryGap: false, //紧挨边缘，不让数据点在中间
+      },
+      yAxis: {
+        type: 'value',
+        scale: 'true', //(缩放) 是否是脱离 0 值比例。设置成 true 后坐标刻度不会强制包含零刻度。
+      },
+      series: [{
+          type: 'line',
+          name: '销量',
+          data: salesA,
+          stack: 'all',     //堆叠图，两条线的 stack 需保持一致，堆叠面积图上的最大的面积代表了所有的数据量的总和，是一个整体。各个叠起来的面积表示各个数据量的大小
+          label: {
+            show: true,
+            position: 'bottom'
+          },
+          markPoint: { // 最大值  最小值
+            data: [{
+              type: 'max',
+              name: '最大值'
+            }, {
+              type: 'min',
+              name: '最小值'
+            }]
+          },
+          markLine: { //平均值
+            data: [{
+              type: 'average',
+              name: '平均值'
+            }]
+          },
+          markArea: { //标注区间
+            data: [
+              [{
+                  name: '平均值到最大值',
+                  type: 'average'
+                },
+                {
+                  type: 'max'
+                }
+              ],
+              [{
+                name: '11月到12月',
+                xAxis: '11月'
+              }, {
+                xAxis: '12月'
+              }]
+            ]
+          },
+          smooth: true, // 线条平滑
+          lineStyle: { // 线条风格
+            color: 'red'
+          },
+          areaStyle: { //填充风格
+            color: 'pink'
+          }
+        },
+        {
+          type: 'line',
+          data: salesB,
+          stack: 'all',
+          areaStyle: {}
+        }
+      ]
+    }
+    myECharts.setOption(option)
+  </script>
+</body>
+
+</html>
