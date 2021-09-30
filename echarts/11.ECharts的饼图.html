@@ -1,0 +1,71 @@
+<!--
+ * @Description: 饼图可以帮助用户快速了解不同分类的数据的占比情况
+ * @Autor: Tong
+ * @Date: 2021-09-30 14:31:24
+ * @LastEditors: Tong
+ * @LastEditTime: 2021-09-30 15:17:44
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./lib/echarts.min.js"></script>
+</head>
+
+<body>
+  <div style="width: 1000px; height: 600px"></div>
+
+  <script>
+    let pieData = [{
+        name: '淘宝',
+        value: 11231
+      },
+      {
+        name: '京东',
+        value: 22673
+      },
+      {
+        name: '唯品会',
+        value: 6123
+      },
+      {
+        name: '1号店',
+        value: 8989
+      },
+      {
+        name: '聚美优品',
+        value: 6700
+      },
+    ]
+    let dom = document.querySelector('div')
+    let myECharts = echarts.init(dom)
+
+    let option = {
+      series: [{
+        type: 'pie',
+        name: '小明年度网购消费',
+        data: pieData,
+        label: {
+          show: 'true',
+          position: 'outside',
+          // formatter: function (arg) {  //决定文字显示的内容
+          //   return '在' + arg.name + '消费' + arg.value + '元\n' + arg.percent + '%'
+          // }
+          formatter: '在{b}消费{c}元\n{d}%'
+        },
+        // radius: ['30%', '70%']  //设置成圆环
+        roseType: 'radius',  //南丁格尔图，  饼图的每一个区域的半径是不同的
+        // selectedMode: 'single'  // 点击选中部分会偏移
+        selectedMode: 'multiple',
+        selectedOffset: 50   // 点击选中偏移距离
+      }]
+    }
+    myECharts.setOption(option)
+  </script>
+</body>
+
+</html>
